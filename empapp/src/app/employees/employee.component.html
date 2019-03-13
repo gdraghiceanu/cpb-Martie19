@@ -1,0 +1,18 @@
+<div class="well hoverwell thumbnail">
+    <h2> {{ employee?.firstName }} {{employee?.lastName}} </h2>
+    <div>Job Title: {{employee?.jobTitleName}}</div>
+    <div>Code: {{employee?.employeeCode}}</div>
+    <div>Region: {{employee?.region}}</div>
+    <div>Phone Number: {{employee?.phoneNumber}}</div>
+    <div>Email: {{employee?.emailAddress}}</div>
+    <div *ngIf = "event?.location">
+        <span>Location: {{ employee?.location?.address}}</span>        
+        <span class="pad-left"> {{ employee?.location?.city}}, {{ employee?.location?.country}}</span>
+    </div>
+    <div *ngIf = "event?.website">
+        Online contact: {{ employee?.website }}
+    </div>
+
+    <!-- <span>Contor: {{ contor }} </span>
+    <button class="btn btn-primary" (click)="clikEvent()">Click me</button> -->
+ </div>

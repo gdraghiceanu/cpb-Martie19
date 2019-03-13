@@ -1,0 +1,18 @@
+<div>
+    <h1>Employees Managament Application</h1>
+    <hr>
+    <div class="well hoverwell thumbnail">
+        <h2> {{employee.firstName}} {{employee.lastName}} </h2>
+        <div>Job Title: {{employee.jobTitleName}}</div>
+        <div>Code: {{employee.employeeCode}}</div>
+        <div>Region: {{employee.region}}</div>
+        <div>Phone Number: {{employee.phoneNumber}}</div>
+        <div>Email: {{employee.emailAddress}}</div>
+        <div>
+            <span>Location: {{ employee.location.address}}</span>
+            <span>&nbsp;</span>
+            <span> {{ employee.location.city}}, {{ employee.location.country}}</span>
+        </div>
+    </div>
+
+</div>
