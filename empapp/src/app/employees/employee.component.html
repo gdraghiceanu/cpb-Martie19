@@ -1,0 +1,31 @@
+<div>
+    <div class="well thumbnail">
+        <h2> {{employee?.firstName}} {{employee?.lastName}} </h2>
+        <div clas="row">
+            <div class="col-md-8">
+                <div>Job Title: {{employee?.jobTitleName}}</div>
+                <div>Code: {{employee?.employeeCode}}</div>
+                <div>Region: {{employee?.region}}</div>
+                <div>Phone Number: {{employee?.phoneNumber}}</div>
+                <div>Email: {{employee?.emailAddress}}</div>
+                <div [hidden] = "!employee?.location">
+                    <span>Location: {{ employee?.location?.address}}</span>
+                    <span>&nbsp;</span>
+                    <span> {{ employee?.location?.city}}, {{ employee?.location?.country}}</span>
+                </div>
+                <div [hidden] = "!employee?.onlineContact">
+                    Online contact: {{ employee?.onlineContact }}
+                </div>
+            </div>
+            <!-- <div class="col-md-4" *ngIf="isVisible">
+                <img [src]="employee?.imageUrl" [style.width.px]="sizePicture" />
+            </div> -->
+        </div>
+
+        <button class="btn btn-primary" (click)="toggleImage()">Show Image</button>
+
+        <button class="btn btn-primary" (click)="handleChildEvent()">Trimit date din copil</button>
+        Contor: {{contor}}
+    </div>
+
+</div>
