@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
 })
 export class EmployeeListComponent {
 
-    employees =        [
+    employees =  [
       {
       userId: 'rirani',
       'jobTitleName':'Developer',
@@ -14,6 +14,7 @@ export class EmployeeListComponent {
       'lastName':'Irani',
       'employeeCode':'E1',
       'region':'CA',
+      'salary': 1234,
       'phoneNumber':'408-1234567',
       'emailAddress':'romin.k.irani@gmail.com',
       'location': {
@@ -29,7 +30,8 @@ export class EmployeeListComponent {
       'firstName':'Neil',
       'lastName':'Irani',
       'employeeCode':'E2',
-      'region':'CA',
+      'region':'BA',
+      'salary': 467,
       'phoneNumber':'408-1111111',
       'emailAddress':'neilrirani@gmail.com',
       'website': 'www.neil.org',
@@ -41,7 +43,8 @@ export class EmployeeListComponent {
       'firstName':'Tom',
       'lastName':'Hanks',
       'employeeCode':'E3',
-      'region':'CA',
+      'region':'DA',
+      'salary': 6789,
       'phoneNumber':'408-2222222',
       'emailAddress':'tomhanks@gmail.com',
       'location': {

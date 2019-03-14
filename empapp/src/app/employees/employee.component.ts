@@ -7,6 +7,8 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
         .pad-left {margin-left: 60px; }
         .well div {color: #bbb; }
         .thumbnail {mni-height: 210px; }
+        .green { color: blue !important;  }
+        .bold { font-weight: bold; }
     `]
 })
 export class EmployeeComponent {
@@ -32,4 +34,19 @@ export class EmployeeComponent {
     getEmployeName () {
         return this.employee.firstName + ' ' + this.employee.lastName;
     }
+
+    getRegionClass() {
+        if ( this.employee && this.employee.region === 'CA') {
+            return ['green bold'];
+        return [];
+        }
+    }
+
+    getRegionStyle(): any {
+        if ( this.employee && this.employee.region === 'CA') {
+            return { color: 'red', 'font-weight': 'bold' };
+        return {};
+        }
+    }
+
 }
