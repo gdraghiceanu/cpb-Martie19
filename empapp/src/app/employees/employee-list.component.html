@@ -1,5 +1,12 @@
 <div>
-    <h1>Employees Managament Application</h1>
-    <hr>
-   
+    <div>
+        <h1>Employees Managament Application</h1>
+        <hr>
+
+        <div class="row" *ngFor = "let employee of employees">
+            <app-emp [employee] = "employee" (employeeOut) = "handleEventFromChild($event)"></app-emp>
+        </div>
+        
+        {{text}}
+    </div>
 </div>

@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="well hoveremp miniemp">
+                <h2> {{employee?.firstName}} {{employee?.lastName}} </h2>
+                <div>Job Title: {{employee?.jobTitleName}}</div>
+                <div>Code: {{employee?.employeeCode}}</div>
+                <div>Region: {{employee?.region}}</div>
+                <div>Phone Number: {{employee?.phoneNumber}}</div>
+                <div>Email: {{employee?.emailAddress}}</div>
+                <div *ngIf = "employee?.location">
+                    <div>
+                        <span>Location: {{ employee?.location.address}}</span>
+                        <span>&nbsp;</span>
+                        <span> {{ employee?.location.city}}, {{ employee?.location.country}}</span>
+                    </div>
+                </div>
+                <div [hidden] = "!employee?.website">
+                    <div>Website: {{employee?.website}}</div>
+                </div>  
+            </div>
+        </div>
+        <div class="col-md-4" *ngIf="isVisible">
+            <img [src]="employee?.imageUrl" [style.width.px]="size" />
+        </div>
+        <button class="btn btn-success" (click)="toggleImage()">Show Image</button>
+        <button class="btn btn-warning" (click) = "handleChildEvent()">Trimite date din child</button>
+        Contor: {{contor}}
+    </div>
+</div>
