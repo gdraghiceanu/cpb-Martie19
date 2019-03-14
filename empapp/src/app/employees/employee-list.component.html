@@ -1,5 +1,8 @@
 <div>
     <h1>Employees Managament Application</h1>
     <hr>
-   
+    <div class="row" *ngFor="let employee_i of employees">
+        <app-emp [employee] = "employee_i" (employeeOut) = "handleEventFromChild($event)"></app-emp>
+       
+    </div>
 </div>
