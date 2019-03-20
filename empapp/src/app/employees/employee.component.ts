@@ -43,10 +43,11 @@ export class EmployeeComponent {
     }
 
     getRegionStyle(): any {
-        if ( this.employee && this.employee.region === 'CA') {
-            return { color: 'red', 'font-weight': 'bold' };
+        // if ( this.employee && this.employee.region === 'CA') {
+        //     return { color: 'red', 'font-weight': 'bold' };
         return {};
         }
     }
 
-}
+
+
