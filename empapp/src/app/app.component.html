@@ -1,4 +1,12 @@
-<app-nav-bar></app-nav-bar>
+<app-nav-bar (searchOut) = "searchOutEvent($event)"></app-nav-bar>
 
-<app-emp-list></app-emp-list>
+<app-emp-list [searchKey] = "searchKeyInApp"></app-emp-list>
 
+<hr>
+<hr>
+
+<!-- <h3>Life Cycle  Hooks: ngOnChanges</h3>
+<input type="text" [(ngModel)] = "userText">
+<app-simpleChange [simpleText] = "userText" ></app-simpleChange> -->
+
+<app-parinte></app-parinte>

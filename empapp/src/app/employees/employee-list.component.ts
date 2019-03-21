@@ -1,14 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Employee } from '../Models/employee';
 
 @Component({
     selector: 'app-emp-list',
     templateUrl: './employee-list.component.html'
 })
-export class EmployeeListComponent implements OnInit {
+export class EmployeeListComponent implements OnInit, OnChanges {
+
+    private _filteredBy: string;
+
+    get filteredBy () {
+        return this._filteredBy;
+    }
+
+    set filteredBy (val: string) {
+        this._filteredBy = val;
+        this.filteredEmployes = val ? this.functieFiltrare(val) : this.employees; 
+    }
 
     temp: any;
 
-    employees = [
+    filteredEmployes: Employee[];
+    employees: Employee[] = [
         {
             userId: 'rirani',
             jobTitleName: 'Developer',
@@ -58,10 +71,31 @@ export class EmployeeListComponent implements OnInit {
         }
     ];
 
+    // folosit pt search
+    @Input() searchKey: string;
+
+    constructor() {        
+        
+    }
+
     ngOnInit() {
+        this.filteredEmployes = this.employees;
+    }
+
+    ngOnChanges(changes: SimpleChanges): void {
+        const changeSearch = changes['searchKey'];
+        var c = changeSearch.currentValue
+
+        this.filteredEmployes = this.employees.filter(emp => emp.firstName.toLocaleLowerCase().indexOf(c) !== -1 );
+
     }
 
     handleEventEmpChild(val) {
         this.temp = val;
+    }
+
+    functieFiltrare(keySearch: string): Employee[] {
+        keySearch = keySearch.toLocaleLowerCase();
+        return this.employees.filter(emp => emp.firstName.toLocaleLowerCase().indexOf(keySearch) !== -1 );
     }
 }

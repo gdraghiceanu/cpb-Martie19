@@ -7,11 +7,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
     title = 'empapp';
-
     filterToSend: string;
+    userText: string = 'text';
+
+    searchKeyInApp:string;
 
     receiveFromNav(value: string) {
         this.filterToSend = value;
+    }
+
+    searchOutEvent(valoare: string) {
+        this.searchKeyInApp = valoare;
     }
 
 }

@@ -1,0 +1,10 @@
+<div style="background-color: aquamarine; color: black" >
+
+  <button  class= "btn btn-primary" (click) = "increment()">Increment</button> {{contor}}
+
+  <app-child [(contor)] = "contor"></app-child>
+  <hr>
+  <app-child [contor] = "contor" (contorChange)="contor=$event"></app-child>
+  <hr>
+  <app-child [contor] = "contor" (contorChange)="onCounterChange($event)"></app-child>
+</div>
