@@ -38,10 +38,10 @@ export class NavBarComponent implements OnInit, AfterViewInit {
     ngAfterViewInit(): void {
         this.navbar.nativeElement.addEventListener('keyup', () => {
             // varianta directa
-            // this.search();
+             this.search();
 
             // varianta debounce
-            this.keyupSubject.next(undefined);
+            // this.keyupSubject.next(undefined);
         });
     }
 
