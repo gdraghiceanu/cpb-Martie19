@@ -9,6 +9,7 @@ import { NavBarComponent } from './nav/nav-bar/nav-bar.component';
 import { ParinteComponent } from './test/parinte.component';
 import { AComponent } from './test/a.component';
 import { A1Component } from './test/a1.component';
+import { EmployeeService } from './employees/shared/employee.service';
 
 
 @NgModule({
@@ -25,7 +26,7 @@ import { A1Component } from './test/a1.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [EmployeeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
