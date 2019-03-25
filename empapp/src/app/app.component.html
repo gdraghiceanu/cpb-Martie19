@@ -1,8 +1,4 @@
-<app-nav-bar></app-nav-bar>
+<app-nav-bar (searchOut) = "searchOutEvent($event)"></app-nav-bar>
 
-<app-emp-list></app-emp-list>
+<app-emp-list [searchKey] = "filterToSend"></app-emp-list>
 
-<hr>
-<hr>
-
-<app-parinte></app-parinte>

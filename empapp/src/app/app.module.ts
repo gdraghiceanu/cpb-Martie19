@@ -6,9 +6,6 @@ import { AppComponent } from './app.component';
 import { EmployeeListComponent } from './employees/employee-list.component';
 import { EmployeeComponent } from './employees/employee.component';
 import { NavBarComponent } from './nav/nav-bar/nav-bar.component';
-import { ParinteComponent } from './test/parinte.component';
-import { AComponent } from './test/a.component';
-import { A1Component } from './test/a1.component';
 import { EmployeeService } from './employees/shared/employee.service';
 
 
@@ -17,10 +14,7 @@ import { EmployeeService } from './employees/shared/employee.service';
     AppComponent,
     EmployeeListComponent,
     EmployeeComponent,
-    NavBarComponent,
-    ParinteComponent,
-    AComponent,
-    A1Component
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
