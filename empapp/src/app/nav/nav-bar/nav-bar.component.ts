@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'app-nav-bar',
@@ -11,30 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavBarComponent implements OnInit {
 
+    searchNav: string;
+    @Output() searchOut = new EventEmitter();
+
     constructor() { }
 
-    ngOnInit() {
-        this.keyupSubscription = this.keyupSubject
-            .pipe(
-                debounceTime(1000)
-            )
-            .subscribe(() => this.search());
-    }
+    ngOnInit() {}
 
-    // button control
     search() {
-        this.filterOut.emit(this.navFilter);
-    }
-
-    // keyup event control
-    ngAfterViewInit(): void {
-        this.navbar.nativeElement.addEventListener('keyup', () => {
-            // varianta directa
-             this.search();
-
-            // varianta debounce
-            // this.keyupSubject.next(undefined);
-        });
+      this.searchOut.emit(this.searchNav);
     }
 
 }
