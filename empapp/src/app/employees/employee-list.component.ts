@@ -5,7 +5,7 @@ import { Employee } from '../models/employee';
     selector: 'app-emp-list',
     templateUrl: './employee-list.component.html'
 })
-export class EmployeeListComponent implements OnInit {
+export class EmployeeListComponent implements OnInit, OnChanges {
 
     private _filteredBy: string;
 
