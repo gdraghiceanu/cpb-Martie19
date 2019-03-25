@@ -1,6 +1,4 @@
-import { Component, OnInit, EventEmitter, Output, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
-import { BehaviorSubject, Subscription } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-nav-bar',
@@ -11,13 +9,7 @@ import { debounceTime } from 'rxjs/operators';
     @media(max-width: 1200px) {#searchForm {display: none }}
   `]
 })
-export class NavBarComponent implements OnInit, AfterViewInit {
-    @Output() filterOut = new EventEmitter<string>();
-    @ViewChild('navbar') navbar: ElementRef<HTMLInputElement>;
-    navFilter: string;
-
-    private keyupSubject: BehaviorSubject<void> = new BehaviorSubject<void>(undefined);
-    private keyupSubscription: Subscription;
+export class NavBarComponent implements OnInit {
 
     constructor() { }
 
@@ -45,5 +37,4 @@ export class NavBarComponent implements OnInit, AfterViewInit {
         });
     }
 
-    // for future , form control.valueChange.subscribe -- add debounce
 }
