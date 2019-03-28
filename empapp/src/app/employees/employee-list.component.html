@@ -1,5 +1,37 @@
 <div>
-    <h1>Employees Managament Application</h1>
+    <h1>Employees Managament Application sddd</h1>
     <hr>
    
+</div>
+<div>
+    <h1>Employees Managament Application</h1>
+    <p>The sum of 1 + 1 is {{1 + 1}}.</p>
+    <p>The sum of 1 + 1 is not {{1 + 1 + getVal()}}.</p>
+    <button (click)="deleteHero()">Delete hero</button>
+
+  
+ 
+    <hr>
+    <div class="well hoveremp miniemp">
+       <h2> {{employee.firstName}} {{employee.lastName}} </h2>
+       <div class="row">
+<div class="col-md-8">
+    <div title="test">Job Title: {{employee.jobTitleName}}</div>
+    <div>Code: {{employee.employeeCode}}</div>
+</div>
+
+       </div>
+       <div>Job Title: {{employee.jobTitleName}}</div>
+       <div>Code: {{employee.employeeCode}}</div>
+       <div>Region: {{employee.region}}</div>
+       <div>Phone Number: {{employee.phoneNumber}}</div>
+       <div>Email: {{employee.emailAddress}}</div>
+       <div>
+           <span>Location: {{ employee.location.address}}</span>
+           <span>&nbsp;</span>
+           <span> {{ employee.location.city}}, {{ employee.location.country}}</span>
+       </div>
+    </div>
+button class="btn btn-primary"
+
 </div>
