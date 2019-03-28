@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeService } from '../shared/employee.service';
 import { Employee } from 'src/app/models/employee';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   templateUrl: './employee-detail.component.html',
@@ -9,10 +10,10 @@ import { Employee } from 'src/app/models/employee';
 export class EmployeeDetailComponent implements OnInit {
 
   employee: Employee;
-  constructor(private empService: EmployeeService) { }
+  constructor(private empService: EmployeeService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.employee = this.empService.getEmployee(1);
+    this.employee = this.empService.getEmployee(+this.activatedRoute.snapshot.params['id']);
   }
 
 }

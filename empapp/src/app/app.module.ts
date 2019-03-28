@@ -10,6 +10,8 @@ import { EmployeeService } from './employees/shared/employee.service';
 import { EmployeeDetailComponent } from './employees/employee-detail/employee-detail.component';
 import { appRoutes } from './routes';
 import { RouterModule } from '@angular/router';
+import { CreateEmployeeComponent } from './employees/create-employee.component';
+import { ErrorComponent } from './errors/error.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +19,29 @@ import { RouterModule } from '@angular/router';
     EmployeeListComponent,
     EmployeeComponent,
     NavBarComponent,
-    EmployeeDetailComponent
+    EmployeeDetailComponent,
+    CreateEmployeeComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [EmployeeService],
+  providers: [
+    EmployeeService,
+    {
+      provide: 'candDeactivateNewEmployee',
+      useValue: checkCompState
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function checkCompState(component: CreateEmployeeComponent) {
+  if (component.isValid) {
+    return window.confirm('You di not save saved this employee! Do you really want to leave this page?');
+  }
+  return true;
+}
