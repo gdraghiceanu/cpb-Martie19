@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { EmployeeService } from 'src/app/employees/shared/employee.service';
 
 @Component({
     selector: 'app-nav-bar',
@@ -13,9 +14,9 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class NavBarComponent implements OnInit {
 
     searchNav: string;
-    @Output() searchOut = new EventEmitter();
+   // @Output() searchOut = new EventEmitter();
 
-    constructor() { }
+    constructor(private employeeService: EmployeeService) { }
 
     ngOnInit() {
         // this.keyupSubscription = this.keyupSubject
@@ -27,7 +28,9 @@ export class NavBarComponent implements OnInit {
 
     // button control
     search() {
-        this.searchOut.emit(this.searchNav);
+        this.employeeService.employeeFilter.next(this.searchNav);
+
+        // this.searchOut.emit(this.searchNav);
     }
 
     // // keyup event control

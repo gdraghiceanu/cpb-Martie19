@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Employee } from 'src/app/models/employee';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable(
     // {
@@ -7,6 +8,8 @@ import { Employee } from 'src/app/models/employee';
     // }
 )
 export class EmployeeService {
+    public employeeFilter: BehaviorSubject<string> = new BehaviorSubject<string>('');
+
     getEmployees(): Employee[] {
         return EMPLOYEES;
     }

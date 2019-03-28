@@ -16,7 +16,7 @@ import { Router } from '@angular/router';
 })
 export class CreateEmployeeComponent implements OnInit {
 
-  isValid: boolean = true;
+  isValid = true;
 
   constructor(private route: Router) { }
 
