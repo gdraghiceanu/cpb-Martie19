@@ -10,11 +10,15 @@ export class EmployeeService {
     getEmployees(): Employee[] {
         return EMPLOYEES;
     }
+
+    getEmployee(id: number): Employee {
+        return EMPLOYEES.find(emp => emp.userId === id);
+    }
 }
 
 const EMPLOYEES: Employee[] = [
     {
-        userId: 'rirani',
+        userId: 1,
         jobTitleName: 'Developer',
         firstName: 'Romin',
         lastName: 'Irani',
@@ -28,10 +32,10 @@ const EMPLOYEES: Employee[] = [
             city: 'London',
             country: 'England'
         },
-        imageUrl: '/assets/images/angularconnect-shield.png'
+        imageUrl: '/assets/images/image1.jpg'
     },
     {
-        'userId': 'nirani',
+        'userId': 2,
         'jobTitleName': 'Developer',
         'firstName': 'Neil',
         'lastName': 'Irani',
@@ -41,10 +45,10 @@ const EMPLOYEES: Employee[] = [
         'phoneNumber': '408-1111111',
         'emailAddress': 'neilrirani@gmail.com',
         'website': 'www.neil.org',
-        'imageUrl': '/assets/images/angularconnect-shield.png'
+        'imageUrl': '/assets/images/image2.jpg'
     },
     {
-        'userId': 'thanks',
+        'userId': 3,
         'jobTitleName': 'Program Directory',
         'firstName': 'Tom',
         'lastName': 'Hanks',
@@ -58,6 +62,6 @@ const EMPLOYEES: Employee[] = [
             'city': 'London',
             'country': 'England'
         },
-        'imageUrl': '/assets/images/angularconnect-shield.png'
+        'imageUrl': '/assets/images/image3.jpg'
     }
 ];

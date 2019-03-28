@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { Employee } from '../models/employee';
+import { EmployeeService } from './shared/employee.service';
 
 @Component({
-    selector: 'app-emp-list',
+    // selector: 'app-emp-list',
     templateUrl: './employee-list.component.html'
 })
 export class EmployeeListComponent implements OnInit, OnChanges {
@@ -18,63 +19,19 @@ export class EmployeeListComponent implements OnInit, OnChanges {
         this.filteredEmployes = val ? this.functieFiltrare(val) : this.employees; 
     }
 
+    constructor(private empService: EmployeeService) {
+    }
+
     // folosit pt search
     @Input() searchKey: string;
 
     temp: any;
 
     filteredEmployes: Employee[];
-    employees = [
-        {
-            userId: 'rirani',
-            jobTitleName: 'Developer',
-            firstName: 'Romin',
-            lastName: 'Irani',
-            employeeCode: 'E1',
-            region: 'CA',
-            salary: 1234,
-            phoneNumber: '408-1234567',
-            emailAddress: 'romin.k.irani@gmail.com',
-            location: {
-                address: '1057 DT',
-                city: 'London',
-                country: 'England'
-            },
-            imageUrl: '/assets/images/angularconnect-shield.png'
-        },
-        {
-            'userId': 'nirani',
-            'jobTitleName': 'Developer',
-            'firstName': 'Neil',
-            'lastName': 'Irani',
-            'employeeCode': 'E2',
-            'region': 'BA',
-            'salary': 467,
-            'phoneNumber': '408-1111111',
-            'emailAddress': 'neilrirani@gmail.com',
-            'website': 'www.neil.org',
-            'imageUrl': '/assets/images/angularconnect-shield.png'
-        },
-        {
-            'userId': 'thanks',
-            'jobTitleName': 'Program Directory',
-            'firstName': 'Tom',
-            'lastName': 'Hanks',
-            'employeeCode': 'E3',
-            'region': 'DA',
-            'salary': 6789,
-            'phoneNumber': '408-2222222',
-            'emailAddress': 'tomhanks@gmail.com',
-            'location': {
-                'address': '1057 DT',
-                'city': 'London',
-                'country': 'England'
-            },
-            'imageUrl': '/assets/images/angularconnect-shield.png'
-        }
-    ];
+    employees: Employee[];
 
     ngOnInit() {
+        this.employees = this.empService.getEmployees();
         this.filteredEmployes = this.employees;
     }
 
