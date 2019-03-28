@@ -6,10 +6,11 @@ import { AppComponent } from './app.component';
 import { EmployeeListComponent } from './employees/employee-list.component';
 import { EmployeeComponent } from './employees/employee.component';
 import { NavBarComponent } from './nav/nav-bar/nav-bar.component';
-import { ParinteComponent } from './test/parinte.component';
-import { AComponent } from './test/a.component';
-import { A1Component } from './test/a1.component';
-
+import { EmployeeDetailComponent } from './employees/employee-detail/employee-detail.component';
+import { appRoutes } from './routes';
+import { RouterModule } from '@angular/router';
+import { CreateEmployeeComponent } from './employees/create-employee.component';
+import { ErrorComponent } from './errors/error.component';
 
 @NgModule({
   declarations: [
@@ -17,13 +18,14 @@ import { A1Component } from './test/a1.component';
     EmployeeListComponent,
     EmployeeComponent,
     NavBarComponent,
-    ParinteComponent,
-    AComponent,
-    A1Component
+    EmployeeDetailComponent,
+    CreateEmployeeComponent,
+    ErrorComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
