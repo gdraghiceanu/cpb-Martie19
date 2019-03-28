@@ -2,7 +2,7 @@
     <h1>Employees Managament Application</h1>
     <hr>
     <div class="row">
-        <div class="col-md-5" *ngFor="let employee of employees">
+        <div class="col-md-5" *ngFor="let employee of filteredEmployes">
             <app-emp  [employee] = "employee"></app-emp>
         </div>
     </div>

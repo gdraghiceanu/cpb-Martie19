@@ -10,7 +10,7 @@ export class AppComponent {
 
     filterToSend: string;
 
-    receiveFromNav(value: string) {
+    searchOutEvent(value: string) {
         this.filterToSend = value;
     }
 
