@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, SimpleChanges, OnChanges } from '@angular/core';
 import { Employee } from '../models/employee';
+import { EmployeeService } from '../services/employee.service';
 
 @Component({
     selector: 'app-emp-list',
@@ -18,61 +19,18 @@ export class EmployeeListComponent implements OnInit, OnChanges {
         this._filteredBy = val;
         this.filteredEmployes = val ? this.functieFiltrare(val) : this.employees; 
     }
+        
+    constructor(private empService: EmployeeService) { 
+    }
+
 
     // folosit pt search
     @Input() searchKey: string;
     filteredEmployes: Employee[];
-    employees = [
-        {
-            userId: 'rirani',
-            jobTitleName: 'Developer',
-            firstName: 'Romin',
-            lastName: 'Irani',
-            employeeCode: 'E1',
-            region: 'CA',
-            salary: 1234,
-            phoneNumber: '408-1234567',
-            emailAddress: 'romin.k.irani@gmail.com',
-            location: {
-                address: '1057 DT',
-                city: 'London',
-                country: 'England'
-            },
-            imageUrl: '/assets/images/image1.jpg'
-        },
-        {
-            'userId': 'nirani',
-            'jobTitleName': 'Developer',
-            'firstName': 'Neil',
-            'lastName': 'Irani',
-            'employeeCode': 'E2',
-            'region': 'BA',
-            'salary': 467,
-            'phoneNumber': '408-1111111',
-            'emailAddress': 'neilrirani@gmail.com',
-            'website': 'www.neil.org',
-            'imageUrl': '/assets/images/image2.jpg'
-        },
-        {
-            'userId': 'thanks',
-            'jobTitleName': 'Program Directory',
-            'firstName': 'Tom',
-            'lastName': 'Hanks',
-            'employeeCode': 'E3',
-            'region': 'DA',
-            'salary': 6789,
-            'phoneNumber': '408-2222222',
-            'emailAddress': 'tomhanks@gmail.com',
-            'location': {
-                'address': '1057 DT',
-                'city': 'London',
-                'country': 'England'
-            },
-            'imageUrl': '/assets/images/image3.jpg'
-        }
-    ];
+    employees: Employee[];
 
     ngOnInit() {
+        this.employees = this.empService.getEmployees();
         this.filteredEmployes = this.employees;
     }
 

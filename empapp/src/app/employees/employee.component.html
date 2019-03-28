@@ -1,4 +1,4 @@
-<div class="well hoverwell thumbnail">
+<div [routerLink] = "['/employees', employee.userId]" class="well hoverwell thumbnail">
     <h2> {{ employee?.firstName }} {{employee?.lastName}} </h2>
     <div>Job Title: {{employee?.jobTitleName}}</div>
     <div>Code: {{employee?.employeeCode}}</div>
