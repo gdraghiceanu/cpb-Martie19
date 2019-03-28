@@ -38,7 +38,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
                 city: 'London',
                 country: 'England'
             },
-            imageUrl: '/assets/images/angularconnect-shield.png'
+            imageUrl: '/assets/images/image1.jpg'
         },
         {
             'userId': 'nirani',
@@ -51,7 +51,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
             'phoneNumber': '408-1111111',
             'emailAddress': 'neilrirani@gmail.com',
             'website': 'www.neil.org',
-            'imageUrl': '/assets/images/angularconnect-shield.png'
+            'imageUrl': '/assets/images/image2.jpg'
         },
         {
             'userId': 'thanks',
@@ -68,7 +68,7 @@ export class EmployeeListComponent implements OnInit, OnChanges {
                 'city': 'London',
                 'country': 'England'
             },
-            'imageUrl': '/assets/images/angularconnect-shield.png'
+            'imageUrl': '/assets/images/image3.jpg'
         }
     ];
 
