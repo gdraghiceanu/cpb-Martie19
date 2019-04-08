@@ -1,8 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Employee } from 'src/app/model/Employee';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class EmployeeService {
+
+    private messageSource = new BehaviorSubject<string>('');
+    currentSearchKey = this.messageSource.asObservable();
+
+    changeSearchKey(key: string): void {
+        this.messageSource.next(key);
+    }
 
     getEmployees (): Employee[] {
         return ALLEMPLOYEES;

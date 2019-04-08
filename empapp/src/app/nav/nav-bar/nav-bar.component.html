@@ -33,7 +33,7 @@
         <div class="form-group">
           <input #navbar name="navbarFilter" type="text" class="form-control"  placeholder="Search Sessions" [(ngModel)] = "searchKeyNav" >
         </div>
-        <button class="btn btn-default"  (click)='searchEmp()' >
+        <button #btnSearch class="btn btn-default"  (click)='searchEmp()' >
           Search
         </button>
       </form>
