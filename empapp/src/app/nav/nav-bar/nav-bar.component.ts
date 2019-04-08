@@ -11,9 +11,7 @@ import {debounceTime } from 'rxjs/operators';
     @media(max-width: 1200px) {#searchForm {display: none }}
   `]
 })
-export class NavBarComponent implements OnInit
-// , AfterViewInit
-{
+export class NavBarComponent implements OnInit {
   searchKeyNav: string;
   @Output() searchNavOut = new EventEmitter();
 
