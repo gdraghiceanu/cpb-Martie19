@@ -10,8 +10,8 @@ export class AppComponent {
 
     filterToSend: string;
 
-    receiveFromNav(value: string) {
-        this.filterToSend = value;
+    searchApp(val: string) {
+        this.filterToSend = val;
     }
 
 }

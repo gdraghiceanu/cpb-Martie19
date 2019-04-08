@@ -1,67 +1,36 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Employee } from '../model/Employee';
+import { EmployeeService } from './shared/employee.service';
 
 @Component({
     selector: 'app-emp-list',
     templateUrl: './employee-list.component.html'
 })
-export class EmployeeListComponent implements OnInit {
+export class EmployeeListComponent implements OnInit, OnChanges {
 
-    temp: any;
+    @Input() searchKey: string;
 
-    employees = [
-        {
-            userId: 'rirani',
-            jobTitleName: 'Developer',
-            firstName: 'Romin',
-            lastName: 'Irani',
-            employeeCode: 'E1',
-            region: 'CA',
-            salary: 1234,
-            phoneNumber: '408-1234567',
-            emailAddress: 'romin.k.irani@gmail.com',
-            location: {
-                address: '1057 DT',
-                city: 'London',
-                country: 'England'
-            },
-            imageUrl: '/assets/images/angularconnect-shield.png'
-        },
-        {
-            'userId': 'nirani',
-            'jobTitleName': 'Developer',
-            'firstName': 'Neil',
-            'lastName': 'Irani',
-            'employeeCode': 'E2',
-            'region': 'BA',
-            'salary': 467,
-            'phoneNumber': '408-1111111',
-            'emailAddress': 'neilrirani@gmail.com',
-            'website': 'www.neil.org',
-            'imageUrl': '/assets/images/angularconnect-shield.png'
-        },
-        {
-            'userId': 'thanks',
-            'jobTitleName': 'Program Directory',
-            'firstName': 'Tom',
-            'lastName': 'Hanks',
-            'employeeCode': 'E3',
-            'region': 'DA',
-            'salary': 6789,
-            'phoneNumber': '408-2222222',
-            'emailAddress': 'tomhanks@gmail.com',
-            'location': {
-                'address': '1057 DT',
-                'city': 'London',
-                'country': 'England'
-            },
-            'imageUrl': '/assets/images/angularconnect-shield.png'
-        }
-    ];
+    filteredEmployees: Employee[] = [];
+    employees: Employee[] = [];
+
+    constructor(private empService: EmployeeService) {
+    }
 
     ngOnInit() {
+        this.employees = this.empService.getEmployees();
+        this.filteredEmployees = this.employees;
     }
 
-    handleEventEmpChild(val) {
-        this.temp = val;
+    ngOnChanges(changes: SimpleChanges): void {
+        const changeSearch = changes['searchKey'];
+        const cur = changeSearch.currentValue;
+        // this.filteredEmployees = this.employees.filter(emp => emp.firstName.toLocaleLowerCase().indexOf(cur) !== -1);
+        this.filteredEmployees = cur ? this.functieFiltrare(cur) : this.employees;
     }
+
+    functieFiltrare(keySearch: string): Employee[] {
+        keySearch = keySearch.toLocaleLowerCase();
+        return this.employees.filter(emp => emp.firstName.toLocaleLowerCase().indexOf(keySearch) !== -1);
+    }
+
 }

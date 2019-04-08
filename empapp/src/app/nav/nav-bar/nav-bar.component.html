@@ -31,9 +31,9 @@
       </div>
       <form id="searchForm"  class="navbar-form navbar-right"  >
         <div class="form-group">
-          <input #navbar name="navbarFilter" type="text" class="form-control"  placeholder="Search Sessions" >
+          <input #navbar name="navbarFilter" type="text" class="form-control"  placeholder="Search Sessions" [(ngModel)] = "searchKeyNav" >
         </div>
-        <button class="btn btn-default"  >
+        <button class="btn btn-default"  (click)='searchEmp()' >
           Search
         </button>
       </form>
