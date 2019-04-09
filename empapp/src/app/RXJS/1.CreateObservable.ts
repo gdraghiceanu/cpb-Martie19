@@ -1,8 +1,8 @@
-import { Observable, of } from 'rxjs'; 
+import { Observable, of } from 'rxjs';
 import { allBooks } from './data';
 import { map } from 'rxjs/operators';
 
-let l = console.log;
+const l = console.log;
 console.clear();
 
 // function subcribeFc(subcriber) {
@@ -11,20 +11,20 @@ console.clear();
 //   }
 // }
 
-let allBooksObservable$ = new Observable(subscriber => {
+const allBooksObservable$ = new Observable(subscriber => {
 
-  //error
+  // error
   if (document.title !== 'RxBooks') {
     subscriber.error('Incorect page title');
   }
 
-  //next
-  for (let book of allBooks) {
+  // next
+  for (const book of allBooks) {
     subscriber.next(book);
   }
 
-  //complete 
-  setTimeout(() => {subscriber.complete()}, 2000)
+  // complete
+  setTimeout(() => {subscriber.complete(); }, 2000);
 
   return () => l('Executing code!');
 });

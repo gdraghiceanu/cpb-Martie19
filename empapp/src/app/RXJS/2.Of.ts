@@ -1,8 +1,11 @@
-let source$ = of('hello', 1, true, allBooks)
-source$.subscribe(v=>l(v));
+import { concat, of, from } from 'rxjs';
+import { allBooks } from 'requisites/4.data';
 
-//concat
-let source1$ = of('hello', 1, true, allBooks[0])
-let source2$ = from(allBooks);
+const source$ = of('hello', 1, true, allBooks);
+source$.subscribe(v => l(v));
+
+// concat
+const source1$ = of('hello', 1, true, allBooks[0]);
+const source2$ = from(allBooks);
 
 concat(source1$, source2$).subscribe(val => l(val));

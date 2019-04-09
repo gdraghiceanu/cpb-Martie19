@@ -1,6 +1,6 @@
 // Import stylesheets
 import './style.css';
-let l = console.log;
+const l = console.log;
 // Write TypeScript code!
 const appDiv: HTMLElement = document.getElementById('app');
 appDiv.innerHTML = `<h1>TypeScript Starter</h1>`;
@@ -29,18 +29,18 @@ public SetTemperature (temp: number) {
  }
 
  public unsubscribe(o: Observer) {
-   let index = this.observers.indexOf(o);
+   const index = this.observers.indexOf(o);
    this.observers.splice(index, 1);
  }
 
  public notifyObservers() {
-   for (let obs of this.observers){
+   for (const obs of this.observers) {
      obs.notify(this.temperature);
    }
  }
 }
 
-//obs1
+// obs1
 class WheatherCom implements Observer {
   private subj: Subject;
 
@@ -54,7 +54,7 @@ class WheatherCom implements Observer {
   }
 }
 
-//obs2
+// obs2
 class VremeRO implements Observer {
   private subj: Subject;
 
@@ -64,16 +64,16 @@ class VremeRO implements Observer {
   }
 
   public notify(temp: number) {
-    if(temp < 25) {
-      l('Vremea se raceste!')
+    if (temp < 25) {
+      l('Vremea se raceste!');
     } else {
-      l('Vremea se incalzeste!')
+      l('Vremea se incalzeste!');
     }
   }
 }
 
-let observable = new WheaatherStation();
-let wheatherCom = new WheatherCom(observable);
-let vremeRO = new VremeRO(observable);
+const observable = new WheaatherStation();
+const  wheatherCom = new WheatherCom(observable);
+const vremeRO = new VremeRO(observable);
 
 observable.SetTemperature(30);
