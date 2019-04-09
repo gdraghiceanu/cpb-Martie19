@@ -12,6 +12,7 @@ import { appRoutes } from './routes';
 import { RouterModule } from '@angular/router';
 import { CreateEmployeeComponent } from './employees/create-employee.component';
 import { ErrorComponent } from './errors/error.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,12 +22,13 @@ import { ErrorComponent } from './errors/error.component';
     NavBarComponent,
     EmployeeDetailComponent,
     CreateEmployeeComponent,
-    ErrorComponent
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    HttpClientModule
   ],
   providers: [
     EmployeeService,
