@@ -7,7 +7,6 @@ import { BehaviorSubject } from 'rxjs';
     //     providedIn: 'root'
     // }
 )
-  employeeFilter: any;
 export class EmployeeService {
     public employeeFilter: BehaviorSubject<string> = new BehaviorSubject<string>('');
 

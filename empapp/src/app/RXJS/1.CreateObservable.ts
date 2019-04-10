@@ -29,4 +29,4 @@ const allBooksObservable$ = new Observable(subscriber => {
   return () => l('Executing code!');
 });
 
-allBooksObservable$.subscribe(carte => l(carte.title));
+// allBooksObservable$.subscribe(carte => l(carte.title));
