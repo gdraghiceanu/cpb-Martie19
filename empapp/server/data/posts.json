@@ -51,27 +51,5 @@
     "imageUrl": "/assets/images/image3.jpg",
     "createdAt": "Tue Apr 09 2019 22:59:51 GMT+0300 (GTB Daylight Time)",
     "updatedAt": "Tue Apr 09 2019 22:59:51 GMT+0300 (GTB Daylight Time)"
-  },
-  {
-    "userId": 4,
-    "createdAt": "Wed Apr 10 2019 00:28:33 GMT+0300 (GTB Daylight Time)",
-    "updatedAt": "Wed Apr 10 2019 00:28:33 GMT+0300 (GTB Daylight Time)",
-    "title": "test again",
-    "content": "Lorem Ipsum",
-    "tags": [
-      "tag1",
-      "tag4"
-    ]
-  },
-  {
-    "userId": 5,
-    "createdAt": "Wed Apr 10 2019 00:29:09 GMT+0300 (GTB Daylight Time)",
-    "updatedAt": "Wed Apr 10 2019 00:29:09 GMT+0300 (GTB Daylight Time)",
-    "title": "test again",
-    "content": "Lorem Ipsum",
-    "tags": [
-      "tag1",
-      "tag4"
-    ]
-  }
+  }  
 ]
