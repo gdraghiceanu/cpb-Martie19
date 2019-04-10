@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Employee } from 'src/app/models/employee';
 import {BehaviorSubject, Observable} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
 
 
 @Injectable(
@@ -12,11 +11,8 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 export class EmployeeService {
    // private url = 'http://localhost:1337/api/v1/posts/';
 
-  constructor(public http: HttpClient) { }
-
     getEmployees(): Employee[] {
       return EMPLOYEES;
-      // return this.http.get<Employee[]>(this.url);
     }
 
     getEmployee(id: number): Employee {

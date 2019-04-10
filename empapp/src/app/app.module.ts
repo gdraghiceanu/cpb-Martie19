@@ -12,7 +12,6 @@ import { appRoutes } from './routes';
 import { RouterModule } from '@angular/router';
 import { CreateEmployeeComponent } from './employees/create-employee.component';
 import { ErrorComponent } from './errors/error.component';
-import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -27,8 +26,7 @@ import {HttpClientModule} from '@angular/common/http';
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(appRoutes),
-    HttpClientModule
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [
     EmployeeService,
