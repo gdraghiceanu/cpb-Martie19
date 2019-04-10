@@ -10,14 +10,13 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
     // }
 )
 export class EmployeeService {
-    public employeeFilter: BehaviorSubject<string> = new BehaviorSubject<string>('');
-    private url = 'http://localhost:1337/api/v1/posts/';
+   // private url = 'http://localhost:1337/api/v1/posts/';
 
   constructor(public http: HttpClient) { }
 
-    getEmployees(): Observable<Employee[]> {
-        // return EMPLOYEES;
-      return this.http.get<Employee[]>(this.url);
+    getEmployees(): Employee[] {
+      return EMPLOYEES;
+      // return this.http.get<Employee[]>(this.url);
     }
 
     getEmployee(id: number): Employee {
