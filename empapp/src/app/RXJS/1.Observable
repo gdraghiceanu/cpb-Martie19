@@ -1,0 +1,85 @@
+//1
+let buton = document.getElementById('btn');
+let div = document.getElementById('div');
+
+let myObservable$ = fromEvent(buton, 'click');
+
+let observer$ = myObservable$.subscribe(ev => {
+  for (let book of allBooks){
+    div.innerHTML += `${book.title} <br>`
+  }
+})
+
+
+//2
+let myObservable$ = ajax('https://jsonplaceholder.typicode.com/posts').subscribe(ajaxResponse => {
+  let books = ajaxResponse.response;
+  for(let item in books) {
+    div.innerHTML += books[item].title + '<br>';
+  }
+});
+
+//3
+let myNumbers = [1,2,3,4,5]
+function fcSubscriber(subscriber) {
+  //next
+  for(let n of myNumbers) {
+    subscriber.next(n);
+  }
+  //error
+  if(myNumbers.length == 0) {
+    subscriber.error('Error');
+  }
+  //complete
+  subscriber.complete();
+}
+let myObservable$ = new Observable(fcSubscriber);
+let abonat = myObservable$.subscribe(val => l(val));
+
+//4
+let observer = {
+  next: val=> l(val),
+  error: err=> l(err),
+  complete: () => l('All Complete!')
+}
+myObservable$.subscribe(
+  val=> l(val),
+  err=> l(err),
+  () => l('All Complete!')
+);
+
+//5
+const getData = (param) => {
+  return of('retrieved new data with param' + param)
+    .pipe(
+      debounceTime(1000)
+    )
+};
+
+//1
+// from([1, 2, 3, 4])
+//   .pipe(
+//     map(par => getData(par))
+//   )
+//   .subscribe( val => {
+//     val.subscribe(res => l(res))
+//   })
+
+// //2
+// from([1, 2, 3, 4])
+//   .pipe(
+//     map(par => getData(par)),
+//     mergeAll()
+//   )
+//   .subscribe( val => 
+//     l(val)
+//   );
+
+// //3
+// from([1, 2, 3, 4])
+//   .pipe(
+//     switchMap(par => getData(par)),
+//   )
+//   .subscribe( val => 
+//     l(val)
+//   );

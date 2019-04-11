@@ -1,5 +1,7 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { EmployeeService } from 'src/app/employees/shared/employee.service';
+import { fromEvent } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
     selector: 'app-nav-bar',
@@ -11,8 +13,9 @@ import { EmployeeService } from 'src/app/employees/shared/employee.service';
     li > a.active {color: #F97924; }
   `]
 })
-export class NavBarComponent {
-
+export class NavBarComponent implements OnInit {
+   
+    @ViewChild('navbar') navbar: ElementRef;
     searchNav: string;
    // @Output() searchOut = new EventEmitter();
 
@@ -20,5 +23,20 @@ export class NavBarComponent {
     // button control
     search() {
         // this.searchOut.emit(this.searchNav);
+        // this.employeeService.empFilterServ.next(this.searchNav);
     }
+
+    ngOnInit(): void {
+        fromEvent(this.navbar.nativeElement, 'keyup')
+        .pipe(
+            debounceTime(1000)
+        )
+        .subscribe(
+            ev => {
+                this.employeeService.empFilterServ.next(this.searchNav);
+            }
+        )
+    }
+
+
 }

@@ -28,8 +28,20 @@ export class EmployeeListComponent implements OnInit {
     // @Input() searchKey: string;
 
     ngOnInit() {
-        this.employees = this.empService.getEmployees();
-        this.filteredEmployes = this.employees;
+        //this.employees = this.empService.getEmployees();
+        this.empService.getEmployees().subscribe(
+            data => {this.employees = data,
+            this.filteredEmployes = this.employees;},
+            err=> console.log('eroare'),
+            () => console.log('allcomplete')
+            );
+
+        // this.filteredEmployes = this.employees;
+        this.empService.empFilterServ.asObservable().subscribe(
+            key => {
+               this.filteredEmployes = this.functieFiltrare(key);
+            }
+        )
     }
 
     // ngOnChanges(changes: SimpleChanges): void {
