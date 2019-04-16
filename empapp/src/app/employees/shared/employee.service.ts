@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Employee } from 'src/app/models/employee';
-import { BehaviorSubject } from 'rxjs';
+import {BehaviorSubject, Observable} from 'rxjs';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+
 
 @Injectable(
     // {
@@ -9,9 +11,13 @@ import { BehaviorSubject } from 'rxjs';
 )
 export class EmployeeService {
     public employeeFilter: BehaviorSubject<string> = new BehaviorSubject<string>('');
+    private url = 'http://localhost:1337/api/v1/posts/';
 
-    getEmployees(): Employee[] {
-        return EMPLOYEES;
+  constructor(public http: HttpClient) { }
+
+    getEmployees(): Observable<Employee[]> {
+        // return EMPLOYEES;
+      return this.http.get<Employee[]>(this.url);
     }
 
     getEmployee(id: number): Employee {
