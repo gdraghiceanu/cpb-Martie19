@@ -11,7 +11,7 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 )
 export class EmployeeService {
     public employeeFilter: BehaviorSubject<string> = new BehaviorSubject<string>('');
-    private url = 'http://localhost:1337/api/v1/posts/';
+    private url = 'http://localhost:1337/api/v1/posts';
 
   constructor(public http: HttpClient) { }
 
@@ -20,8 +20,9 @@ export class EmployeeService {
       return this.http.get<Employee[]>(this.url);
     }
 
-    getEmployee(id: number): Employee {
-        return EMPLOYEES.find(emp => emp.userId === id);
+    getEmployee(id: number): Observable<Employee> {
+        return this.http.get<Employee>(`${this.url}/${id}`);
+       // return EMPLOYEES.find(emp => emp.userId === id);
     }
 }
 
