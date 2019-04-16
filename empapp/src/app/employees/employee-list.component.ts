@@ -48,8 +48,6 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
     //     const changeSearch = changes['searchKey'];
     //     const c = changeSearch.currentValue;
     // this.filteredEmployes = this.employees.filter(emp => emp.firstName.toLocaleLowerCase().indexOf(c) !== -1 );
-
-
     // }
 
     handleEventEmpChild(val) {

@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Employee } from '../models/employee';
 
 @Component({
     selector: 'app-emp',
@@ -13,7 +14,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class EmployeeComponent {
 
-    @Input() employee: any;
+    @Input() employee: Employee;
     @Output() empClick = new EventEmitter();
 
     public contor = 0;
