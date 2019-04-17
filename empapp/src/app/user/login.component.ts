@@ -6,7 +6,8 @@ import { FormGroup, NgForm } from '@angular/forms';
 
 @Component({
     templateUrl: './login.component.html',
-    styles: [`em { float: right; color:#E05C65; padding-left: 10px }  `]
+    // styles: [`em { float: right; color:#E05C65; padding-left: 10px }  `],
+    styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
     userName: string;

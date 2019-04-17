@@ -4,22 +4,23 @@
     <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
         <div class="form-group">
             <label for="userName">User Name:</label>
-            <em *ngIf="loginForm.controls.un?.errors?.required && (loginForm.controls.un?.touched || mouseoverLogin)">Required</em>
-            <em *ngIf="loginForm.controls.un?.errors?.minlength && (loginForm.controls.un?.touched || mouseoverLogin)">Min 3 characters</em>
+            <!-- <em *ngIf="loginForm.controls.un?.errors?.required && (loginForm.controls.un?.touched || mouseoverLogin)">Required</em>
+            <em *ngIf="loginForm.controls.un?.errors?.minlength && (loginForm.controls.un?.touched || mouseoverLogin)">Min 3 characters</em> -->
             <!-- <em *ngIf="unvar.invalid && (unvar.touched || unvar.dirty  || mouseoverLogin ) && unvar.errors?.required">Required</em>
             <em *ngIf="unvar.invalid && (unvar.touched || unvar.dirty  || mouseoverLogin ) && unvar.errors?.minlength">Min 3 characters</em> -->
             
             <input id="userName" type="text" class="form-control" required minlength="3" placeholder="User Name..."
                 (ngModel)="userName" name="un" #unvar="ngModel"       
+                [ngClass]="{'is-invalid': (unvar.touched || unvar.dirty) && !unvar.valid }" 
                 />
-            <!-- <span class="invalid-feedback">
+            <span class="invalid-feedback">
                 <span *ngIf = "unvar.errors?.required">
                     Required
                 </span>
                 <span *ngIf = "unvar.errors?.minlength">
                     Please use min 3 characters
                 </span>
-            </span> -->
+            </span>
         </div>
         <div class="form-group">
             <label for="password">Password:</label>
