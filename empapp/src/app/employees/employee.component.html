@@ -11,11 +11,11 @@
     <div>Salary: {{employee?.salary}}</div>
     <div>Phone Number: {{employee?.phoneNumber}}</div>
     <div>Email: {{employee?.emailAddress}}</div>
-    <div *ngIf = "event?.location">
+    <div *ngIf = "employee?.location">
         <span>Location: {{ employee?.location?.address}}</span>        
         <span class="pad-left"> {{ employee?.location?.city}}, {{ employee?.location?.country}}</span>
     </div>
-    <div *ngIf = "event?.website">
+    <div *ngIf = "employee?.website">
         Online contact: {{ employee?.website }}
     </div>
 

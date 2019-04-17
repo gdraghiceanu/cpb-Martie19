@@ -1,0 +1,10 @@
+ [ngClass]="{'is-invalid': (unvar.touched || unvar.dirty) && !unvar.valid }" 
+
+ <!-- <span class="invalid-feedback">
+                <span *ngIf = "unvar.errors?.required">
+                    Required
+                </span>
+                <span *ngIf = "unvar.errors?.minlength">
+                    Please use min 3 characters
+                </span>
+            </span> -->

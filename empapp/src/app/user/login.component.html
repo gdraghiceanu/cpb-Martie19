@@ -1,0 +1,73 @@
+<h1>Login</h1>
+<hr>
+<div class="col-md-4">
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+        <div class="form-group">
+            <label for="userName">User Name:</label>
+            <em *ngIf="loginForm.controls.un?.errors?.required && (loginForm.controls.un?.touched || mouseoverLogin)">Required</em>
+            <em *ngIf="loginForm.controls.un?.errors?.minlength && (loginForm.controls.un?.touched || mouseoverLogin)">Min 3 characters</em>
+            <!-- <em *ngIf="unvar.invalid && (unvar.touched || unvar.dirty  || mouseoverLogin ) && unvar.errors?.required">Required</em>
+            <em *ngIf="unvar.invalid && (unvar.touched || unvar.dirty  || mouseoverLogin ) && unvar.errors?.minlength">Min 3 characters</em> -->
+            
+            <input id="userName" type="text" class="form-control" required minlength="3" placeholder="User Name..."
+                (ngModel)="userName" name="un" #unvar="ngModel"       
+                />
+            <!-- <span class="invalid-feedback">
+                <span *ngIf = "unvar.errors?.required">
+                    Required
+                </span>
+                <span *ngIf = "unvar.errors?.minlength">
+                    Please use min 3 characters
+                </span>
+            </span> -->
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <em *ngIf="loginForm.controls.password?.invalid  && (loginForm.controls.password?.touched || mouseoverLogin)">Required</em>
+            <input id="password" type="password" class="form-control" required placeholder="Password..."
+                (ngModel)="password" name="password" />
+        </div>
+        <span (mouseenter)="mouseoverLogin = true" (mouseleave)="mouseoverLogin = false">
+            <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+        </span>
+        <button type="button" class="btn btn-default" (click)="cancel()">Cancel</button>
+
+    </form>
+</div>
+
+
+<!-- UserName.Valid = {{ un.valid }} <br>
+UserName.Dirty = {{ un.dirty }} <br>
+UserName.Touched = {{ un.touched }} <br> -->
+<div class="row">
+    <div class="col-md-3" style="padding-left: 25px">
+        loginForm.valid: <b style="font-size: 20px">{{ loginForm.valid }}</b> <br />
+        loginForm.invalid: <b style="font-size: 20px">{{ loginForm.invalid }}</b> <br />
+        loginForm.dirty: <b style="font-size: 20px">{{ loginForm.dirty }}</b> <br />
+        loginForm.pristine: <b style="font-size: 20px">{{ loginForm.pristine }}</b> <br />
+        loginForm.touched: <b style="font-size: 20px">{{ loginForm.touched }}</b> <br />
+        loginForm.untouched: <b style="font-size: 20px">{{ loginForm.untouched }}</b> <br />
+        <br />
+        <br />
+        loginForm.controls.userName.valid: <b style="font-size: 20px">{{ loginForm.controls.un?.valid }}</b>        <br />
+        loginForm.controls.userName.invalid: <b style="font-size: 20px">{{ loginForm.controls.un?.invalid }}</b>        <br />
+        loginForm.controls.userName.dirty: <b style="font-size: 20px">{{ loginForm.controls.un?.dirty }}</b>        <br />
+        loginForm.controls.userName.pristine: <b style="font-size: 20px">{{ loginForm.controls.un?.pristine }}</b>        <br />
+        loginForm.controls.userName.touched: <b style="font-size: 20px">{{ loginForm.controls.un?.touched }}</b>        <br />
+        loginForm.controls.userName.untouched: <b            style="font-size: 20px">{{ loginForm.controls.un?.untouched }}</b> <br />
+        <br />
+        <br />
+        loginForm.controls.password.valid: <b style="font-size: 20px">{{ loginForm.controls.password?.valid }}</b>
+        <br />
+        loginForm.controls.password.invalid: <b style="font-size: 20px">{{ loginForm.controls.password?.invalid }}</b>
+        <br />
+        loginForm.controls.password.dirty: <b style="font-size: 20px">{{ loginForm.controls.password?.dirty }}</b>
+        <br />
+        loginForm.controls.password.pristine: <b style="font-size: 20px">{{ loginForm.controls.password?.pristine }}</b>
+        <br />
+        loginForm.controls.password.touched: <b style="font-size: 20px">{{ loginForm.controls.password?.touched }}</b>
+        <br />
+        loginForm.controls.password.untouched: <b
+            style="font-size: 20px">{{ loginForm.controls.password?.untouched }}</b> <br />
+    </div>
+</div>
