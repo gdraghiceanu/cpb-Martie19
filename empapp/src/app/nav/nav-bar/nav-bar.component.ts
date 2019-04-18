@@ -2,6 +2,7 @@ import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '
 import { EmployeeService } from 'src/app/employees/shared/employee.service';
 import { fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { AuthentificationService } from 'src/app/employees/user/auth.service';
 
 @Component({
     selector: 'app-nav-bar',
@@ -19,7 +20,7 @@ export class NavBarComponent implements OnInit {
     searchNav: string;
     // @Output() searchOut = new EventEmitter();
 
-    constructor(private employeeService: EmployeeService) { }
+    constructor(private employeeService: EmployeeService, private auth: AuthentificationService) { }
 
     ngOnInit() {
         fromEvent(this.navbar.nativeElement, 'keyup')

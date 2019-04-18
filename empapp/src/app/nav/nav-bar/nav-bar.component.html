@@ -30,7 +30,8 @@
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
           <li>
-            <a>Bine ai venit 'User to be updated'</a>
+            <a [routerLink]="['user/login']" *ngIf="!auth.isAuthenticated()">Login</a>
+            <a *ngIf="auth.isAuthenticated()">Welcome {{ auth.currentUser.firstName }}</a>
           </li>
         </ul>
       </div>

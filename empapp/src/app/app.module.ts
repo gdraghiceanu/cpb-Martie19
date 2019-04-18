@@ -13,6 +13,8 @@ import { RouterModule } from '@angular/router';
 import { CreateEmployeeComponent } from './employees/create-employee.component';
 import { ErrorComponent } from './errors/error.component';
 import {HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './employees/user/login.component';
+import { AuthentificationService } from './employees/user/auth.service';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,7 @@ import {HttpClientModule} from '@angular/common/http';
     EmployeeDetailComponent,
     CreateEmployeeComponent,
     ErrorComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -32,6 +35,7 @@ import {HttpClientModule} from '@angular/common/http';
   ],
   providers: [
     EmployeeService,
+    AuthentificationService,
     {
       provide: 'candDeactivateNewEmployee',
       useValue: checkCompState

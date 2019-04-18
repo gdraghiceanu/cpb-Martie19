@@ -1,0 +1,77 @@
+<h1>Login</h1>
+<hr>
+<div class="col-md-4">
+    <form #myLoginForm="ngForm" (ngSubmit)="login(myLoginForm)">
+        <div class="form-group">
+            <label for="userName">User Name:</label>
+            <!-- 2 -->
+            <!-- <span class="myValidation" *ngIf="myLoginForm.controls.un?.errors?.required && myLoginForm.controls.un?.touched"></span> -->
+            <!-- 1 -->
+            <span class="myValidation" *ngIf="unvar.invalid && (unvar.touched || unvar.dirty || myMouseLogin) && unvar.errors?.required">
+                Required</span> 
+             <span class="myValidation" *ngIf="unvar.invalid && (unvar.touched || unvar.dirty) && unvar.errors?.minlength"        > 
+             </span>
+
+            <input id="userName" type="text" class="form-control" 
+            placeholder="User Name..." 
+            [(ngModel)]="user.userName"
+                name="un" #unvar="ngModel" required minlength="3"/>
+            <!-- <span class="invalid-feedback">
+                <span *ngIf="unvar.errors?.required">
+                    Required
+                </span>
+                <span *ngIf="unvar.errors?.minlength">
+                    Min 3 characters
+                </span>
+            </span> -->
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input id="password" 
+            type="password" 
+            class="form-control" 
+            placeholder="Password..." 
+            [(ngModel)]="user.password"
+            name="pass" 
+            required 
+            minlength="4" />
+        </div>
+
+        <button (mouseenter)="myMouseLogin = true" (mouseleave) = "myMouseLogin = false" 
+        type="submit" class="btn btn-primary" 
+        >
+        Login
+    </button>
+        <button type="button" class="btn btn-default" (click)="onCancel()">Cancel</button>
+    </form>
+</div>
+
+Data Model: {{ user | json }} <br>
+Form Model: {{ myLoginForm.value | json }} <br>
+
+<div class="row">
+<div class="col-md-3" style="padding-left: 25px">
+    myLoginForm.valid: <b style="font-size: 20px">{{ myLoginForm.valid }}</b>  <br/>
+    myLoginForm.invalid: <b style="font-size: 20px">{{ myLoginForm.invalid }}</b> <br/>  
+    myLoginForm.dirty: <b style="font-size: 20px">{{ myLoginForm.dirty }}</b> <br/>
+    myLoginForm.pristine: <b style="font-size: 20px">{{ myLoginForm.pristine }}</b> <br/>
+    myLoginForm.touched: <b style="font-size: 20px">{{ myLoginForm.touched }}</b> <br/>  
+    myLoginForm.untouched: <b style="font-size: 20px">{{ myLoginForm.untouched }}</b> <br/>  
+    <br/>
+    <br/>
+    myLoginForm.controls.un.valid: <b style="font-size: 20px">{{ myLoginForm.controls.un?.valid }}</b>  <br/>
+    myLoginForm.controls.un.invalid: <b style="font-size: 20px">{{ myLoginForm.controls.un?.invalid }}</b> <br/>  
+    myLoginForm.controls.un.dirty: <b style="font-size: 20px">{{ myLoginForm.controls.un?.dirty }}</b> <br/>
+    myLoginForm.controls.un.pristine: <b style="font-size: 20px">{{ myLoginForm.controls.un?.pristine }}</b> <br/>
+    myLoginForm.controls.un.touched: <b style="font-size: 20px">{{ myLoginForm.controls.un?.touched }}</b> <br/>  
+    myLoginForm.controls.un.untouched: <b style="font-size: 20px">{{ myLoginForm.controls.un?.untouched }}</b> <br/>  
+    <br/>
+    <br/>
+    myLoginForm.controls.password.valid:  <b style="font-size: 20px">{{ myLoginForm.controls.pass?.valid }}</b>  <br/>
+    myLoginForm.controls.password.invalid: <b style="font-size: 20px">{{ myLoginForm.controls.pass?.invalid }}</b>   <br/>
+    myLoginForm.controls.password.dirty:  <b style="font-size: 20px">{{ myLoginForm.controls.pass?.dirty }}</b>   <br/>
+    myLoginForm.controls.password.pristine: <b style="font-size: 20px">{{ myLoginForm.controls.pass?.pristine }}</b>  <br/>
+    myLoginForm.controls.password.touched:  <b style="font-size: 20px">{{ myLoginForm.controls.pass?.touched }}</b> <br/>
+    myLoginForm.controls.password.untouched:  <b style="font-size: 20px">{{ myLoginForm.controls.pass?.untouched }}</b> <br/>
+</div>     
+           </div>
