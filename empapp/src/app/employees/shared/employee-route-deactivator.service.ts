@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanDeactivate, ActivatedRouteSnapshot } from '@angular/router';
-import { CreateEmployeeComponent } from '../create-employee.component';
+import { CreateEmployeeComponent } from '../template-create-employee/create-employee.component';
 
 @Injectable({
   providedIn: 'root'

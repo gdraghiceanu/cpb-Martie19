@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Employee } from '../models/employee';
+import { Employee } from '../../models/employee';
 import { NgForm } from '@angular/forms';
 
 @Component({

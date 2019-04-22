@@ -10,11 +10,12 @@ import { EmployeeService } from './employees/shared/employee.service';
 import { EmployeeDetailComponent } from './employees/employee-detail/employee-detail.component';
 import { appRoutes } from './routes';
 import { RouterModule } from '@angular/router';
-import { CreateEmployeeComponent } from './employees/create-employee.component';
+import { CreateEmployeeComponent } from './employees/template-create-employee/create-employee.component';
 import { ErrorComponent } from './errors/error.component';
 import {HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './user/login.component';
 import { AuthService } from './user/auth.service';
+import { ReactiveCreateEmployeeComponent } from './employees/reactive-create-employee/reactive-create-employee.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { AuthService } from './user/auth.service';
     EmployeeDetailComponent,
     CreateEmployeeComponent,
     ErrorComponent,
-    LoginComponent
+    LoginComponent,
+    ReactiveCreateEmployeeComponent
   ],
   imports: [
     BrowserModule,
