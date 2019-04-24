@@ -38,13 +38,8 @@ export class ReactiveCreateEmployeeComponent implements OnInit {
     jobTitle: new FormControl(''),
     code: new FormControl(''),
     region: new FormControl(''),
-    salary: new FormControl(''),
-    certificates: new FormArray([this.createCertificateGroup()])
+    salary: new FormControl('')
   });
-
-  get certificates(): FormArray {
-    return this.employeeForm.get('certificates') as FormArray;
-  }
 
   constructor(private route: Router) {}
 
@@ -55,15 +50,4 @@ export class ReactiveCreateEmployeeComponent implements OnInit {
   }
 
   saveEmployee() {}
-
-  addCertificate(): void{
-    this.certificates.push(this.createCertificateGroup());
-  }
-
-  private createCertificateGroup(): FormGroup {
-    return new FormGroup({
-      name: new FormControl(''),
-      year: new FormControl('')
-    });
-  }
 }

@@ -1,22 +1,21 @@
-.myValidation { 
-    float: right;
-     color:#E05C65;
-      padding-left: 10px
-     }
+.myValidation {
+  float: right;
+  color: #e05c65;
+  padding-left: 10px;
+}
 
+.is-invalid {
+  border-color: #dc3545;
+}
 
-     .is-invalid{
-        border-color: #dc3545;
-    }
-    
-    .invalid-feedback{
-        display: none;
-        width: 100%;
-        margin-top: .25rem;
-        font-size: 80%;
-        color: #dc3545;
-    }
-    
-    .is-invalid~.invalid-feedback{
-        display: block;
-    } 
+.invalid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #dc3545;
+}
+
+.is-invalid ~ .invalid-feedback {
+  display: block;
+}

@@ -1,0 +1,88 @@
+<!-- <div class="container">
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <label>
+      First Name:
+      <input type="text" formControlName="firstName" />
+    </label>
+    <label>
+      Last Name:
+      <input type="text" formControlName="lastName" />
+    </label>
+  </form>
+</div> -->
+
+<div class="container">
+        <form [formGroup]="developmentForm">
+          <div formArrayName="technologies">
+            <h3>Technologies</h3> <button (click)="addTechnology()">Add Technology</button>
+      
+            <div *ngFor="let tech of technologies.controls; let i=index;">
+              <div [formGroupName]="i">
+                <label>
+                  Technology Name:
+                  <input type="text" formControlName="name">
+                </label>
+                <label>
+                  Level of Experince:
+                  <input type="text" formControlName="experience">
+                </label>
+              </div>
+            </div>
+          </div>
+        </form>
+        Form Value: {{ developmentForm.value | json }}
+      
+      </div>
+      
+      <form [formGroup]="profileForm2" (ngSubmit)="onSubmit()">
+        <!-- <label>
+          Last Name:
+          <input type="text" formControlName="lastName">
+        </label>
+      
+        <div formGroupName="address">
+          <h3>Address</h3>
+        
+          <label>
+            Street:
+            <input type="text" formControlName="street">
+          </label>
+        
+          <label>
+            City:
+            <input type="text" formControlName="city">
+          </label>
+          
+          <label>
+            State:
+            <input type="text" formControlName="state">
+          </label>
+        
+          <label>
+            Zip Code:
+            <input type="text" formControlName="zip">
+          </label>
+        </div> -->
+      
+        <div formArrayName="certificates">
+          <h3>Aliases</h3> <button (click)="addCertificate()">Add Certificate</button>
+      
+          <div *ngFor="let certificate of certificatesArray.controls; let i=index">
+            <div [formGroupName]="i">
+              <label>
+                Certificate Name:
+                <input type="text" formControlName="name">
+              </label>
+              <label>
+                Certificate Year:
+                <input type="text" formControlName="year">
+              </label>
+            </div>
+          </div>
+        </div>
+        <button type="submit">Save</button>
+      </form>
+      
+      <p>
+        Form Value: {{ profileForm2.value | json }}
+      </p>
