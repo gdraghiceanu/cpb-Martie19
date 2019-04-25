@@ -7,6 +7,8 @@ import {
   FormBuilder,
   NgForm
 } from '@angular/forms';
+import { Employee } from 'src/app/models/employee';
+import { EmployeeService } from '../shared/employee.service';
 
 @Component({
   selector: 'app-reactive-create-employee',
@@ -32,6 +34,8 @@ export class ReactiveCreateEmployeeComponent implements OnInit {
     'Suceava'
   ];
 
+  myEmployee: Employee;
+
   employeeForm = new FormGroup({
     firstName: new FormControl(''),
     lastName: new FormControl(''),
@@ -46,17 +50,42 @@ export class ReactiveCreateEmployeeComponent implements OnInit {
     return this.employeeForm.get('certificates') as FormArray;
   }
 
-  constructor(private route: Router) {}
+  constructor(private route: Router, private empService: EmployeeService) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.myEmployee = {
+      'userId': null,
+      'jobTitleName': 'Developer',
+      'firstName': 'Tom',
+      'lastName': 'Cruise',
+      'employeeCode': 'E1',
+      'region': 'CA',
+      'salary': 1234,
+      'phoneNumber': '408-1234567',
+      'emailAddress': 'totalmem.c@gmail.com',
+      'location': {
+      'address': '1057 DT',
+      'city': 'NY',
+      'country': 'USA'
+      },
+      'imageUrl': '/assets/images/image1.jpg'
+    };
+  }
 
   cancel() {
     this.route.navigate(['/employees']);
   }
 
-  saveEmployee() {}
 
-  addCertificate(): void{
+  saveEmployee() {
+    this.empService
+    .saveEmployee(this.myEmployee)
+    .subscribe( emp =>  {
+      console.log(emp);
+    });
+  }
+
+  addCertificate(): void {
     this.certificates.push(this.createCertificateGroup());
   }
 

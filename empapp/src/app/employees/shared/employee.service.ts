@@ -24,6 +24,13 @@ export class EmployeeService {
         return this.http.get<Employee>(`${this.url}/${id}`);
        // return EMPLOYEES.find(emp => emp.userId === id);
     }
+
+    saveEmployee(employee: Employee): Observable<Employee> {
+        const headers = new HttpHeaders({'Content-Type': 'application/json'});
+        headers.append('Access-Control-Allow-Origin', 'http://localhost:1337/api/v1/posts');
+
+        return this.http.post<Employee>(this.url, employee, {headers: headers });
+    }
 }
 
 const EMPLOYEES: Employee[] = [
