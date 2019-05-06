@@ -3,3 +3,8 @@
     margin: 10px;
     border: 1px solid cadetblue;
 }
+
+.invalid-message{
+    color: red;
+    float: right;
+}

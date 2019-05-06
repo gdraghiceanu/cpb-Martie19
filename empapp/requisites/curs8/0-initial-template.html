@@ -1,16 +1,16 @@
 <h1>New Employee</h1>
 <hr />
 <div class="col-md-6">
-  <form (ngSubmit)="saveEmployee(newEmpForm)">
-    <div class="form-group" [ngClass]="{ error: false }">
+  <form (ngSubmit)="saveEmployee()">
+    <div class="form-group">
       <label>First Name:</label>
-      <span class="myValid" *ngIf="false">Required</span>
+      <span class="invalid-message" *ngIf="false">Required</span>
       <input name="firstName" type="text" class="form-control" />
     </div>
 
-    <div class="form-group" [ngClass]="{ error: false }">
+    <div class="form-group">
       <label>Last Name:</label>
-      <span class="myValid" *ngIf="false">Required</span>
+      <span class="invalid-message" *ngIf="false">Required</span>
       <input name="lastName" type="text" class="form-control" />
     </div>
 

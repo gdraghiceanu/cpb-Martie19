@@ -1,12 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  FormControl,
-  FormGroup,
-  FormArray,
-  FormBuilder,
-  NgForm
-} from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-create-employee',

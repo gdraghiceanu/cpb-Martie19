@@ -2,15 +2,15 @@
 <hr />
 <div class="col-md-6">
   <form [formGroup]="employeeForm" (ngSubmit)="saveEmployee()">
-    <div class="form-group" [ngClass]="{ error: false }">
+    <div class="form-group">
       <label>First Name:</label>
-      <span class="myValid" *ngIf="false">Required</span>
+      <span class="invalid-message" *ngIf="false">Required</span>
       <input formControlName="firstName" type="text" class="form-control" />
     </div>
 
-    <div class="form-group" [ngClass]="{ error: false }">
+    <div class="form-group">
       <label>Last Name:</label>
-      <span class="myValid" *ngIf="false">Required</span>
+      <span class="invalid-message" *ngIf="false">Required</span>
       <input formControlName="lastName" type="text" class="form-control" />
     </div>
 
@@ -59,9 +59,9 @@
     </div>
 
     <div class="form-group" formArrayName="certificates">
-      <label class="col-form-label">Certificates</label>
+      <label class="col-form-label" style="margin-right: 10px">Certificates</label>
 
-      <button (click)="addCertificate()">Add Another Certificate</button>
+      <button (click)="addCertificate()" class="btn btn-default">Add Another Certificate</button>
 
       <div *ngFor="let cert of certificates.controls; let i=index">
         <div [formGroupName]="i" class="certificate-group">

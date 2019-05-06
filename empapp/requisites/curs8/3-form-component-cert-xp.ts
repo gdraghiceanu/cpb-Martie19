@@ -1,12 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import {
-  FormControl,
-  FormGroup,
-  FormArray,
-  FormBuilder,
-  NgForm
-} from '@angular/forms';
+import { FormControl, FormGroup, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-reactive-create-employee',
@@ -56,7 +50,7 @@ export class ReactiveCreateEmployeeComponent implements OnInit {
 
   saveEmployee() {}
 
-  addCertificate(): void{
+  addCertificate(): void {
     this.certificates.push(this.createCertificateGroup());
   }
 
