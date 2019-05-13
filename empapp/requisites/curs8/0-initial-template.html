@@ -1,0 +1,68 @@
+<h1>New Employee</h1>
+<hr />
+<div class="col-md-6">
+  <form (ngSubmit)="saveEmployee()">
+    <div class="form-group">
+      <label>First Name:</label>
+      <span class="invalid-message" *ngIf="false">Required</span>
+      <input name="firstName" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label>Last Name:</label>
+      <span class="invalid-message" *ngIf="false">Required</span>
+      <input name="lastName" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Job Title</label>
+      <select class="form-control" name="jobTitle">
+        <option value="">Select a Job Title</option>
+        <option value="{{ job }}" *ngFor="let job of jobs">{{ job }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="col-form-label">Code</label>
+      <input class="form-control" type="text" placeholder="Code..." name="code" />
+
+      <div *ngIf="false">
+        <div class="alert alert-danger" *ngIf="false">
+          Code is required!
+        </div>
+        <div class="alert alert-danger" *ngIf="false">
+          The format of Code is not Correct! Use pattern:"3dig-3 letters"
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Region</label>
+      <select class="form-control" name="region">
+        <option value="default">Select a Region</option>
+        <option *ngFor="let region of regions">{{ region }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="col-form-label">Salary</label>
+      <input class="form-control" type="text" placeholder="Salary..." name="salary" />
+
+      <div *ngIf="false">
+        <div class="alert alert-danger" *ngIf="false">
+          Salary is required!
+        </div>
+        <div class="alert alert-danger" *ngIf="false">
+          The format of Salary is not Correct!
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="false">
+      Save
+    </button>
+    <button type="button" class="btn btn-default" (click)="cancel()">
+      Cancel
+    </button>
+  </form>
+</div>

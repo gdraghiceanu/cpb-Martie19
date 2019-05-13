@@ -1,0 +1,88 @@
+<h1>New Employee</h1>
+<hr />
+<div class="col-md-6">
+  <form [formGroup]="employeeForm" (ngSubmit)="saveEmployee()">
+    <div class="form-group">
+      <label>First Name:</label>
+      <span class="invalid-message" *ngIf="false">Required</span>
+      <input formControlName="firstName" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label>Last Name:</label>
+      <span class="invalid-message" *ngIf="false">Required</span>
+      <input formControlName="lastName" type="text" class="form-control" />
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Job Title</label>
+      <select class="form-control" formControlName="jobTitle">
+        <option value="">Select a Job Title</option>
+        <option value="{{ job }}" *ngFor="let job of jobs">{{ job }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="col-form-label">Code</label>
+      <input class="form-control" type="text" placeholder="Code..." formControlName="code" />
+
+      <div *ngIf="false">
+        <div class="alert alert-danger" *ngIf="false">
+          Code is required!
+        </div>
+        <div class="alert alert-danger" *ngIf="false">
+          The format of Code is not Correct! Use pattern:"3dig-3 letters"
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Region</label>
+      <select class="form-control" formControlName="region">
+        <option value="default">Select a Region</option>
+        <option *ngFor="let region of regions">{{ region }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="col-form-label">Salary</label>
+      <input class="form-control" type="text" placeholder="Salary..." formControlName="salary" />
+
+      <div *ngIf="false">
+        <div class="alert alert-danger" *ngIf="false">
+          Salary is required!
+        </div>
+        <div class="alert alert-danger" *ngIf="false">
+          The format of Salary is not Correct!
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group" formArrayName="certificates">
+      <label class="col-form-label" style="margin-right: 10px">Certificates</label>
+
+      <button (click)="addCertificate()" class="btn btn-default">Add Another Certificate</button>
+
+      <div *ngFor="let cert of certificates.controls; let i=index">
+        <div [formGroupName]="i" class="certificate-group">
+          <label class="col-form-label">Certificate Name</label>
+          <input class="form-control" type="text" placeholder="Certificate name" formControlName="name" />
+
+          <label class="col-form-label">Certificate Year</label>
+          <input class="form-control" type="text" placeholder="Certificate Year" formControlName="year" />
+        </div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="false">
+      Save
+    </button>
+    <button type="button" class="btn btn-default" (click)="cancel()">
+      Cancel
+    </button>
+  </form>
+
+  <div style="text-align: center; width: 100%;">
+    {{employeeForm.value | json}}
+  </div>
+</div>

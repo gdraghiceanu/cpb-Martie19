@@ -1,0 +1,6 @@
+{
+    "html.format.wrapLineLength": 120,
+    "html.format.wrapAttributes": "aligned-multiple",
+    "prettier.disableLanguages": ["html"],
+    "prettier.singleQuote": true
+}
