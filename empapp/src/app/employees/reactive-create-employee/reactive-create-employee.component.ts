@@ -7,6 +7,8 @@ import {
   Validators,
   FormControl
 } from '@angular/forms';
+import { NameNotAllowedValidator } from 'requisites/curs9/Validators/NameNotAllowed.validator';
+import { MinSalaryByRegionValidator } from 'requisites/curs9/Validators/MinSalaryByRegion.validator';
 
 @Component({
   selector: 'app-reactive-create-employee',
@@ -32,8 +34,12 @@ export class ReactiveCreateEmployeeComponent implements OnInit {
     'Suceava'
   ];
 
+  regionSalaries: {region: string, salary: number}[] = this.regions.map(
+    (region, index) => ({region: region, salary: ((index + 1) * 1000)})
+  );
+
   employeeForm = this.formBuilder.group({
-    firstName: ['', Validators.required],
+    firstName: ['', [Validators.required, NameNotAllowedValidator(['Alex', 'Andrei'])]],
     lastName: ['', Validators.required],
     jobTitle: ['', Validators.required],
     code: [
@@ -43,7 +49,7 @@ export class ReactiveCreateEmployeeComponent implements OnInit {
     region: ['', Validators.required],
     salary: ['', [Validators.required, Validators.min(900)]],
     certificates: this.formBuilder.array([this.createCertificateGroup()])
-  });
+  }, {validator: MinSalaryByRegionValidator('region', 'salary', this.regionSalaries)});
 
   get firstName(): FormControl {
     return this.employeeForm.get('firstName') as FormControl;
