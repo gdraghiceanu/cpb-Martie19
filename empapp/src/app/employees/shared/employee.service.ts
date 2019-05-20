@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Employee } from 'src/app/models/employee';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {BehaviorSubject, Observable, of} from 'rxjs';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { delay } from 'rxjs/operators';
 
 
 @Injectable(
@@ -30,6 +31,10 @@ export class EmployeeService {
         headers.append('Access-Control-Allow-Origin', 'http://localhost:1337/api/v1/posts');
 
         return this.http.post<Employee>(this.url, employee, {headers: headers });
+    }
+
+    checkCodeReserved(code: string): Observable<boolean> {
+        return of(true).pipe(delay(2000));
     }
 }
 
