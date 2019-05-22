@@ -1,14 +1,14 @@
+import { Injectable } from '@angular/core';
 import {
   AsyncValidator,
   AbstractControl,
   ValidationErrors
 } from '@angular/forms';
-import { Observable } from 'rxjs/internal/Observable';
 import { EmployeeService } from 'src/app/employees/shared/employee.service';
 import { map } from 'rxjs/operators';
-import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/internal/Observable';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class CodeReservedValidator implements AsyncValidator {
   constructor(private employeeService: EmployeeService) {}
 

@@ -6,6 +6,7 @@
     "ng": "ng",
     "server": "node_modules/.bin/nodemon --harmony -e js",
     "start": "ng serve",
+    "start-cors": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

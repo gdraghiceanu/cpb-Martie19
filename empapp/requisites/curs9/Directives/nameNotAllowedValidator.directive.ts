@@ -1,13 +1,10 @@
-import {
-  Directive,
-  Input
-} from 'requisites/curs9/directives/node_modules/@angular/core';
+import { Directive, Input } from '@angular/core';
 import {
   Validator,
   AbstractControl,
   ValidationErrors,
   NG_VALIDATORS
-} from 'requisites/curs9/directives/node_modules/@angular/forms';
+} from '@angular/forms';
 import { NameNotAllowedValidator } from '../validators/nameNotAllowed.validator';
 
 @Directive({

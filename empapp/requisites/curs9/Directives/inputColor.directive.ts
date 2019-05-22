@@ -3,8 +3,8 @@ import {
   ElementRef,
   HostListener,
   Input
-} from 'requisites/curs9/directives/node_modules/@angular/core';
-import { FormControl } from 'requisites/curs9/directives/node_modules/@angular/forms';
+} from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Directive({
   selector: '[inputColor]'
