@@ -7,10 +7,10 @@ import {
   Validators,
   FormControl
 } from '@angular/forms';
-import { NameNotAllowedValidator } from 'requisites/curs9/Validators/nameNotAllowed.validator';
-import { MinSalaryByRegionValidator } from 'requisites/curs9/Validators/minSalaryByRegion.validator';
-import { MinCertificateNbAndAgeValidator } from 'requisites/curs9/Validators/minCertificateNbAndAge.validator';
-import { CodeReservedValidator } from 'requisites/curs9/Validators/codeReserved.validator';
+import { NameNotAllowedValidator } from 'src/app/validators/nameNotAllowed.validator';
+import { MinCertificateNbAndAgeValidator } from 'src/app/validators/minCertificateNbAndAge.validator';
+import { MinSalaryByRegionValidator } from 'src/app/validators/minSalaryByRegion.validator';
+import { CodeReservedValidator } from 'src/app/validators/codeReserved.validator';
 
 @Component({
   selector: 'app-reactive-create-employee',
@@ -48,7 +48,7 @@ export class ReactiveCreateEmployeeComponent implements OnInit {
       ],
       lastName: ['', Validators.required],
       jobTitle: ['', Validators.required],
-      code: [
+      code: [ 
         '',
         [Validators.required, Validators.pattern('[a-zA-Z]{1,3}-[0-9]{1,3}')],
         this.codeReservedValidator.validate.bind(this.codeReservedValidator)

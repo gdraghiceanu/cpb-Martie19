@@ -16,7 +16,7 @@ export class SuperheroInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     const modified = req.clone({
-      headers: req.headers.set('MyFavoriteHero', 'Batman')
+      headers: req.headers.set('Authorization', 'Bearer 11231233213')
       //setHeaders: { 'MySecondFavoriteHero': 'Ironman' }
     });
     return next.handle(modified).pipe(

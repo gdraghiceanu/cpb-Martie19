@@ -1,5 +1,10 @@
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import {
+  Directive,
+  ElementRef,
+  HostListener,
+  Input
+} from 'requisites/curs9/directives/node_modules/@angular/core';
+import { FormControl } from 'requisites/curs9/directives/node_modules/@angular/forms';
 
 @Directive({
   selector: '[inputColor]'
