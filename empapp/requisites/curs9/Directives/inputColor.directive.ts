@@ -2,7 +2,7 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
 @Directive({
-    selector: '[inputColor]'
+  selector: '[inputColor]'
 })
 export class InputColorDirective {
   constructor(private elementRef: ElementRef<HTMLInputElement>) {}

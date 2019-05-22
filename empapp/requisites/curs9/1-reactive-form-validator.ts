@@ -57,7 +57,7 @@ export class ReactiveCreateEmployeeComponent implements OnInit {
       salary: ['', [Validators.required, Validators.min(900)]],
       certificates: this.formBuilder.array(
         [this.createCertificateGroup()],
-        MinCertificateNbAndAgeValidator(1, 2 , 'year')
+        MinCertificateNbAndAgeValidator(1, 2, 'year')
       )
     },
     {
@@ -97,7 +97,11 @@ export class ReactiveCreateEmployeeComponent implements OnInit {
     return this.employeeForm.get('certificates') as FormArray;
   }
 
-  constructor(private route: Router, private formBuilder: FormBuilder, private codeReservedValidator: CodeReservedValidator) {}
+  constructor(
+    private route: Router,
+    private formBuilder: FormBuilder,
+    private codeReservedValidator: CodeReservedValidator
+  ) {}
 
   ngOnInit(): void {}
 
