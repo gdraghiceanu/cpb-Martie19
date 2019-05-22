@@ -5,16 +5,16 @@ import {
   RouterStateSnapshot
 } from '@angular/router';
 import { Observable } from 'rxjs/internal/Observable';
-import { EmployeeService } from '../employees/shared/employee.service';
+import { of } from 'rxjs/internal/observable/of';
 
 @Injectable()
-export class JobsResolver implements Resolve<string[]> {
-  constructor(private employeeService: EmployeeService) {}
+export class EuroCurrencyResolver implements Resolve<number> {
+  constructor() {}
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<string[]> {
-    return this.employeeService.getJobs();
+  ): Observable<number> {
+    return of(4.75);
   }
 }
