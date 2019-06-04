@@ -1,35 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Employee } from 'src/app/models/employee';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { delay } from 'rxjs/operators';
 
 
 @Injectable(
-    // {
-    //     providedIn: 'root'
-    // }
+    {
+        providedIn: 'root'
+    }
 )
 export class EmployeeService {
     public employeeFilter: BehaviorSubject<string> = new BehaviorSubject<string>('');
     private url = 'http://localhost:1337/api/v1/posts';
 
-  constructor(public http: HttpClient) { }
+    constructor(public http: HttpClient) { }
 
     getEmployees(): Observable<Employee[]> {
         // return EMPLOYEES;
-      return this.http.get<Employee[]>(this.url);
+         return this.http.get<Employee[]>(this.url)
+         .pipe(delay(500));
     }
 
     getEmployee(id: number): Observable<Employee> {
         return this.http.get<Employee>(`${this.url}/${id}`);
-       // return EMPLOYEES.find(emp => emp.userId === id);
+        // return EMPLOYEES.find(emp => emp.userId === id);
     }
 
     saveEmployee(employee: Employee): Observable<Employee> {
-        const headers = new HttpHeaders({'Content-Type': 'application/json'});
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
         headers.append('Access-Control-Allow-Origin', 'http://localhost:1337/api/v1/posts');
 
-        return this.http.post<Employee>(this.url, employee, {headers: headers });
+        return this.http.post<Employee>(this.url, employee, { headers: headers });
     }
 }
 

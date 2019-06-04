@@ -2,6 +2,7 @@ import { Component, OnInit, Input, SimpleChanges, OnChanges, OnDestroy } from '@
 import { Employee } from '../models/employee';
 import { EmployeeService } from './shared/employee.service';
 import { Subscription } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     // selector: 'app-emp-list',
@@ -13,19 +14,21 @@ export class EmployeeListComponent implements OnInit, OnDestroy {
 
     private employeeFilterSubscription: Subscription;
 
-    constructor(private empService: EmployeeService) {
-    }
+    constructor(private empService: EmployeeService, private route: ActivatedRoute) { }
 
 
     ngOnInit() {
-        this.empService.getEmployees().subscribe(
-            data => {
-                this.employees = data,
-                    this.filteredEmployes = this.employees;
-            },
-            err => console.log('eroare'),
-            () => console.log('allcomplete')
-        );
+
+        // this.empService.getEmployees().subscribe(
+        //     data => {
+        //         this.employees = data,
+        //             this.filteredEmployes = this.employees;
+        //     },
+        //     err => console.log('eroare'),
+        //     () => console.log('allcomplete')
+        // );
+        this.employees = this.route.snapshot.data['employees'];
+        this.filteredEmployes = this.employees;
 
         // this.filteredEmployes = this.employees;
         this.employeeFilterSubscription = this.empService.employeeFilter.asObservable().subscribe(
