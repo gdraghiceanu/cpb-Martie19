@@ -16,6 +16,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { LoginComponent } from "./user/login.component";
 import { AuthService } from "./user/auth.service";
 import { ReactiveCreateEmployeeComponent } from "./employees/reactive-create-employee/reactive-create-employee.component";
+import { WelcomeComponent } from './welcome/welcome.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { ReactiveCreateEmployeeComponent } from "./employees/reactive-create-emp
     CreateEmployeeComponent,
     ErrorComponent,
     LoginComponent,
-    ReactiveCreateEmployeeComponent
+    ReactiveCreateEmployeeComponent,
+    WelcomeComponent
   ],
   imports: [
     BrowserModule,
