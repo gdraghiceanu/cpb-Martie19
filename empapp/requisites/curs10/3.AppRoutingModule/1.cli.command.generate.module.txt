@@ -1,0 +1,1 @@
+ng g m app-routing --flat -m app
