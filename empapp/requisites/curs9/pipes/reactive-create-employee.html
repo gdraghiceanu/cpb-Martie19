@@ -5,7 +5,6 @@
     <div class="form-group">
       <label>First Name:</label>
       <span class="invalid-message" *ngIf="ifControlRequired(firstName)">Field is required</span>
-      <span class="invalid-message" *ngIf="firstName.touched && firstName.invalid && firstName.errors['nameNotAllowed']">This name is not allowed</span>
       <input formControlName="firstName" type="text" class="form-control" />
     </div>
 
@@ -36,9 +35,6 @@
         <div *ngIf="code.errors['pattern']">
           The format of Code is not Correct! Use pattern: "1 to 3 3letters - 1 to digits"
         </div>
-        <div *ngIf="code.errors['CodeIsReserved']">
-          {{code.errors['CodeIsReserved']}}
-        </div>
       </div>
 
       <input class="form-control" type="text" placeholder="Code..." formControlName="code" />
@@ -65,9 +61,6 @@
           The minimum salary allowed is {{salary.errors['min']['min']}}
         </div>
       </div>
-      <div class="invalid-message" *ngIf="salary.valid && salary.touched && employeeForm.invalid && employeeForm.errors['minSalaryForRegion']">
-        {{employeeForm.errors['minSalaryForRegion']}}
-      </div>
 
       <input class="form-control" type="number" placeholder="Salary..." formControlName="salary" />
       
@@ -77,9 +70,6 @@
       <label class="col-form-label" style="margin-right: 10px">Certificates</label>
 
       <button (click)="addCertificate()" class="btn btn-default">Add Another Certificate</button>
-      <div *ngIf="certificates.invalid && certificates.touched && certificates.errors['minCertificateNbAndAgeValidator']">
-        {{certificates.errors['minCertificateNbAndAgeValidator']}}
-      </div>
 
       <div *ngFor="let cert of certificates.controls; let i=index">
         <div [formGroupName]="i" class="certificate-group">

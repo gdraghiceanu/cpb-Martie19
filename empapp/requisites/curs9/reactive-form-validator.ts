@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import {
   FormGroup,
   FormArray,
@@ -7,10 +7,10 @@ import {
   Validators,
   FormControl
 } from '@angular/forms';
-import { NameNotAllowedValidator } from 'src/app/validators/name-not-allowed.validator';
-import { MinCertificateNbAndAgeValidator } from 'src/app/validators/min-certificate-nb-and-age.validator';
-import { MinSalaryByRegionValidator } from 'src/app/validators/min-salary-by-region.validator';
-import { CodeReservedValidator } from 'src/app/validators/code-reserved.validator';
+import { NameNotAllowedValidator } from 'src/app/validators/nameNotAllowed.validator';
+import { MinCertificateNbAndAgeValidator } from 'src/app/validators/minCertificateNbAndAge.validator';
+import { MinSalaryByRegionValidator } from 'src/app/validators/minSalaryByRegion.validator';
+import { CodeReservedValidator } from 'src/app/validators/codeReserved.validator';
 
 @Component({
   selector: 'app-reactive-create-employee',
@@ -18,10 +18,27 @@ import { CodeReservedValidator } from 'src/app/validators/code-reserved.validato
   styleUrls: ['./reactive-create-employee.component.css']
 })
 export class ReactiveCreateEmployeeComponent implements OnInit {
-  jobs: string[] = [];
-  regions: string[] = [];
-  regionSalaries: { region: string; salary: number }[] = [];
-  euroExchangeRate: number;
+  jobs: string[] = [
+    'Developer',
+    'Programm Directory',
+    'Project Manager',
+    'Business Analyst',
+    'CEO',
+    'Office Manager'
+  ];
+  regions: string[] = [
+    'Bucuresti',
+    'Constanta',
+    'Cluj',
+    'Timisoara',
+    'Sibiu',
+    'Iasi',
+    'Suceava'
+  ];
+
+  regionSalaries: { region: string; salary: number }[] = this.regions.map(
+    (region, index) => ({ region: region, salary: (index + 1) * 1000 })
+  );
 
   employeeForm = this.formBuilder.group(
     {
@@ -31,7 +48,7 @@ export class ReactiveCreateEmployeeComponent implements OnInit {
       ],
       lastName: ['', Validators.required],
       jobTitle: ['', Validators.required],
-      code: [
+      code: [ 
         '',
         [Validators.required, Validators.pattern('[a-zA-Z]{1,3}-[0-9]{1,3}')],
         this.codeReservedValidator.validate.bind(this.codeReservedValidator)
@@ -81,26 +98,15 @@ export class ReactiveCreateEmployeeComponent implements OnInit {
   }
 
   constructor(
-    private route: ActivatedRoute,
-    private router: Router,
+    private route: Router,
     private formBuilder: FormBuilder,
     private codeReservedValidator: CodeReservedValidator
   ) {}
 
-  ngOnInit(): void {
-    this.route.data.subscribe((data: {jobs: string[], regions: string[], euro: number}) => {
-      this.jobs = data.jobs;
-      this.regions = data.regions;
-      const newRegionSalaries = this.regions.map(
-        (region, index) => ({ region: region, salary: (index + 1) * 1000 })
-      );
-      this.regionSalaries.push(...newRegionSalaries);
-      this.euroExchangeRate = data.euro;
-    });
-  }
+  ngOnInit(): void {}
 
   cancel() {
-    this.router.navigate(['/employees']);
+    this.route.navigate(['/employees']);
   }
 
   saveEmployee() {

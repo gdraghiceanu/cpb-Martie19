@@ -22,7 +22,7 @@ export class EmployeeService {
     }
 
     checkCodeReserved(code: string): Observable<boolean> {
-        return of(code === 'a-1').pipe(delay(2000));
+        return of(true).pipe(delay(2000));
     }
 
     getRegions(): Observable<string[]>{
