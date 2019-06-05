@@ -1,0 +1,7 @@
+//for future modules
+ng generate module employees/employee --flat -m app
+or
+ng g m employees/employee --flat -m app
+
+//for shared module
+ng g m shared/shared --flat -m employees/employee.module
