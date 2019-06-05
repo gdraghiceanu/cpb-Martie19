@@ -11,19 +11,19 @@ import { ReactiveCreateEmployeeComponent } from './reactive-create-employee/reac
 import { EmployeeRouteDeactivatorService } from './shared/employee-route-deactivator.service';
 import { EmployeeListResolver } from './shared/employee-list.resolver.service';
 import { EmployeeRouteActivatorService } from './shared/employee-route-activator.service';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild([
-      { path: '/newT', component: CreateEmployeeComponent, canDeactivate: [EmployeeRouteDeactivatorService] },
-      { path: '/newR', component: ReactiveCreateEmployeeComponent },
+      { path: 'newT', component: CreateEmployeeComponent, canDeactivate: [EmployeeRouteDeactivatorService] },
+      { path: 'newR', component: ReactiveCreateEmployeeComponent },
       { path: '', component: EmployeeListComponent, resolve: { employees: EmployeeListResolver } },
-      { path: '/:id', component: EmployeeDetailComponent, canActivate: [EmployeeRouteActivatorService] },
-    ])
+      { path: ':id', component: EmployeeDetailComponent, canActivate: [EmployeeRouteActivatorService] },
+    ]),
+    SharedModule
   ],
   declarations: [
     EmployeeListComponent,

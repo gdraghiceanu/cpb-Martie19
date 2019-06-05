@@ -15,6 +15,8 @@ import { EmployeeModule } from './employees/employee.module';
 import { FormsModule } from '@angular/forms';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { SelectiveStrategy } from './selective-strategy.service';
+import { StarComponent } from './shared/star.component';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -22,12 +24,13 @@ import { SelectiveStrategy } from './selective-strategy.service';
     NavBarComponent,
     ErrorComponent,
     WelcomeComponent
-  ],
+    ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes, {preloadingStrategy: SelectiveStrategy })
+    // RouterModule.forRoot(appRoutes, {preloadingStrategy: SelectiveStrategy }),
+    AppRoutingModule
   ],
   providers: [
     // EmployeeService,
