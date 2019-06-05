@@ -1,7 +1,7 @@
 [
   {
     "userId": 1,
-    "jobTitleName": "Developer",
+    "jobTitleName": "Programmer",
     "firstName": "Romin",
     "lastName": "Irani",
     "employeeCode": "E1",
@@ -16,7 +16,8 @@
     },
     "imageUrl": "/assets/images/image1.jpg",
     "createdAt": "Tue Apr 09 2019 22:59:51 GMT+0300 (GTB Daylight Time)",
-    "updatedAt": "Tue Apr 09 2019 22:59:51 GMT+0300 (GTB Daylight Time)"
+    "updatedAt": "Tue Apr 09 2019 22:59:51 GMT+0300 (GTB Daylight Time)",
+    "rating": 4
   },
   {
     "userId": 2,
@@ -31,7 +32,8 @@
     "website": "www.neil.org",
     "imageUrl": "/assets/images/image2.jpg",
     "createdAt": "Tue Apr 09 2019 22:59:51 GMT+0300 (GTB Daylight Time)",
-    "updatedAt": "Tue Apr 09 2019 22:59:51 GMT+0300 (GTB Daylight Time)"
+    "updatedAt": "Tue Apr 09 2019 22:59:51 GMT+0300 (GTB Daylight Time)",
+    "rating": 2
   },
   {
     "userId": 3,
@@ -50,6 +52,7 @@
     },
     "imageUrl": "/assets/images/image3.jpg",
     "createdAt": "Tue Apr 09 2019 22:59:51 GMT+0300 (GTB Daylight Time)",
-    "updatedAt": "Tue Apr 09 2019 22:59:51 GMT+0300 (GTB Daylight Time)"
+    "updatedAt": "Tue Apr 09 2019 22:59:51 GMT+0300 (GTB Daylight Time)",
+    "rating": 3
   }
 ]

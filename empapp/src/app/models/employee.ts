@@ -12,6 +12,7 @@ export class Employee {
     imageUrl: string;
     website?: string;
     location?: Location;
+    rating: number;
 }
 
 export class Location {

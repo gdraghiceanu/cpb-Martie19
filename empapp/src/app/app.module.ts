@@ -6,7 +6,7 @@ import { AppComponent } from "./app.component";
 import { EmployeeListComponent } from "./employees/employee-list.component";
 import { EmployeeComponent } from "./employees/employee.component";
 import { NavBarComponent } from "./nav/nav-bar/nav-bar.component";
-import { EmployeeService } from "./employees/shared/employee.service";
+import { EmployeeService } from "./employees/services/employee.service";
 import { EmployeeDetailComponent } from "./employees/employee-detail/employee-detail.component";
 import { appRoutes } from "./routes";
 import { RouterModule } from "@angular/router";
@@ -17,6 +17,7 @@ import { LoginComponent } from "./user/login.component";
 import { AuthService } from "./user/auth.service";
 import { ReactiveCreateEmployeeComponent } from "./employees/reactive-create-employee/reactive-create-employee.component";
 import { WelcomeComponent } from './welcome/welcome.component';
+import { StarComponent } from './shared/star.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { WelcomeComponent } from './welcome/welcome.component';
     ErrorComponent,
     LoginComponent,
     ReactiveCreateEmployeeComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    StarComponent
   ],
   imports: [
     BrowserModule,

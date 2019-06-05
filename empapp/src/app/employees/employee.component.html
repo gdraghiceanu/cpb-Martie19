@@ -7,7 +7,8 @@
         <span *ngSwitchCase="'CA'">(South Area)</span>
         <span *ngSwitchCase="'BA'">(North Area)</span>
         <span *ngSwitchDefault>(Central Area)</span>
-    </div>
+    </div>  
+
     <div>Salary: {{employee?.salary}}</div>
     <div>Phone Number: {{employee?.phoneNumber}}</div>
     <div>Email: {{employee?.emailAddress}}</div>
@@ -17,6 +18,10 @@
     </div>
     <div *ngIf = "employee?.website">
         Online contact: {{ employee?.website }}
+    </div>
+
+    <div>
+            <pm-star [rating]="employee.rating"></pm-star>
     </div>
 
     <!-- <span>Contor: {{ contor }} </span>

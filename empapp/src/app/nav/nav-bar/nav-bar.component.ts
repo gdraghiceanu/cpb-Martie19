@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
-import { EmployeeService } from 'src/app/employees/shared/employee.service';
+import { EmployeeService } from 'src/app/employees/services/employee.service';
 import { fromEvent } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
 import { AuthService } from 'src/app/user/auth.service';

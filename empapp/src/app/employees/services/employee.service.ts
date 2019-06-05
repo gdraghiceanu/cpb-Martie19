@@ -49,7 +49,8 @@ const EMPLOYEES: Employee[] = [
             city: 'London',
             country: 'England'
         },
-        imageUrl: '/assets/images/image1.jpg'
+        imageUrl: '/assets/images/image1.jpg',
+        rating: 4
     },
     {
         'userId': 2,
@@ -62,7 +63,8 @@ const EMPLOYEES: Employee[] = [
         'phoneNumber': '408-1111111',
         'emailAddress': 'neilrirani@gmail.com',
         'website': 'www.neil.org',
-        'imageUrl': '/assets/images/image2.jpg'
+        'imageUrl': '/assets/images/image2.jpg',
+        'rating': 4
     },
     {
         'userId': 3,
@@ -79,6 +81,7 @@ const EMPLOYEES: Employee[] = [
             'city': 'London',
             'country': 'England'
         },
-        'imageUrl': '/assets/images/image3.jpg'
+        'imageUrl': '/assets/images/image3.jpg',
+        'rating': 4
     }
 ];
