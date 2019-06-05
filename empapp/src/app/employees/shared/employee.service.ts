@@ -1,18 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Employee } from 'src/app/models/employee';
 import {BehaviorSubject, Observable, of} from 'rxjs';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import { delay } from 'rxjs/operators';
 
-
-@Injectable(
-    // {
-    //     providedIn: 'root'
-    // }
-)
+@Injectable()
 export class EmployeeService {
     public employeeFilter: BehaviorSubject<string> = new BehaviorSubject<string>('');
-    private url = 'http://localhost:1337/api/v1/posts';
+    private url = 'http://localhost:4200/api/v1/posts';
 
   constructor(public http: HttpClient) { }
 
@@ -26,15 +21,31 @@ export class EmployeeService {
        // return EMPLOYEES.find(emp => emp.userId === id);
     }
 
-    saveEmployee(employee: Employee): Observable<Employee> {
-        const headers = new HttpHeaders({'Content-Type': 'application/json'});
-        headers.append('Access-Control-Allow-Origin', 'http://localhost:1337/api/v1/posts');
-
-        return this.http.post<Employee>(this.url, employee, {headers: headers });
+    checkCodeReserved(code: string): Observable<boolean> {
+        return of(code === 'a-1').pipe(delay(2000));
     }
 
-    checkCodeReserved(code: string): Observable<boolean> {
-        return of(true).pipe(delay(2000));
+    getRegions(): Observable<string[]>{
+        return of([
+            'Bucuresti',
+            'Constanta',
+            'Cluj',
+            'Timisoara',
+            'Sibiu',
+            'Iasi',
+            'Suceava'
+          ]);
+    }
+
+    getJobs(): Observable<string[]>{
+        return of([
+            'Developer',
+            'Programm Directory',
+            'Project Manager',
+            'Business Analyst',
+            'CEO',
+            'Office Manager'
+        ]);
     }
 }
 

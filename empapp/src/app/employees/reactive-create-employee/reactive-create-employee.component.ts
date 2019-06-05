@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import {
   FormGroup,
   FormArray,
@@ -7,8 +7,10 @@ import {
   Validators,
   FormControl
 } from '@angular/forms';
-import { NameNotAllowedValidator } from 'requisites/curs9/Validators/NameNotAllowed.validator';
-import { MinSalaryByRegionValidator } from 'requisites/curs9/Validators/MinSalaryByRegion.validator';
+import { NameNotAllowedValidator } from 'src/app/validators/name-not-allowed.validator';
+import { MinCertificateNbAndAgeValidator } from 'src/app/validators/min-certificate-nb-and-age.validator';
+import { MinSalaryByRegionValidator } from 'src/app/validators/min-salary-by-region.validator';
+import { CodeReservedValidator } from 'src/app/validators/code-reserved.validator';
 
 @Component({
   selector: 'app-reactive-create-employee',
@@ -16,40 +18,39 @@ import { MinSalaryByRegionValidator } from 'requisites/curs9/Validators/MinSalar
   styleUrls: ['./reactive-create-employee.component.css']
 })
 export class ReactiveCreateEmployeeComponent implements OnInit {
-  jobs: string[] = [
-    'Developer',
-    'Programm Directory',
-    'Project Manager',
-    'Business Analyst',
-    'CEO',
-    'Office Manager'
-  ];
-  regions: string[] = [
-    'Bucuresti',
-    'Constanta',
-    'Cluj',
-    'Timisoara',
-    'Sibiu',
-    'Iasi',
-    'Suceava'
-  ];
+  jobs: string[] = [];
+  regions: string[] = [];
+  regionSalaries: { region: string; salary: number }[] = [];
+  euroExchangeRate: number;
 
-  regionSalaries: {region: string, salary: number}[] = this.regions.map(
-    (region, index) => ({region: region, salary: ((index + 1) * 1000)})
+  employeeForm = this.formBuilder.group(
+    {
+      firstName: [
+        '',
+        [Validators.required, NameNotAllowedValidator(['Alex', 'Andrei'])]
+      ],
+      lastName: ['', Validators.required],
+      jobTitle: ['', Validators.required],
+      code: [
+        '',
+        [Validators.required, Validators.pattern('[a-zA-Z]{1,3}-[0-9]{1,3}')],
+        this.codeReservedValidator.validate.bind(this.codeReservedValidator)
+      ],
+      region: ['', Validators.required],
+      salary: ['', [Validators.required, Validators.min(900)]],
+      certificates: this.formBuilder.array(
+        [this.createCertificateGroup()],
+        MinCertificateNbAndAgeValidator(1, 2, 'year')
+      )
+    },
+    {
+      validator: MinSalaryByRegionValidator(
+        'region',
+        'salary',
+        this.regionSalaries
+      )
+    }
   );
-
-  employeeForm = this.formBuilder.group({
-    firstName: ['', [Validators.required, NameNotAllowedValidator(['Alex', 'Andrei'])]],
-    lastName: ['', Validators.required],
-    jobTitle: ['', Validators.required],
-    code: [
-      '',
-      [Validators.required, Validators.pattern('[a-zA-Z]{1,3}-[0-9]{1,3}')]
-    ],
-    region: ['', Validators.required],
-    salary: ['', [Validators.required, Validators.min(900)]],
-    certificates: this.formBuilder.array([this.createCertificateGroup()])
-  }, {validator: MinSalaryByRegionValidator('region', 'salary', this.regionSalaries)});
 
   get firstName(): FormControl {
     return this.employeeForm.get('firstName') as FormControl;
@@ -79,12 +80,27 @@ export class ReactiveCreateEmployeeComponent implements OnInit {
     return this.employeeForm.get('certificates') as FormArray;
   }
 
-  constructor(private route: Router, private formBuilder: FormBuilder) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private codeReservedValidator: CodeReservedValidator
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.route.data.subscribe((data: {jobs: string[], regions: string[], euro: number}) => {
+      this.jobs = data.jobs;
+      this.regions = data.regions;
+      const newRegionSalaries = this.regions.map(
+        (region, index) => ({ region: region, salary: (index + 1) * 1000 })
+      );
+      this.regionSalaries.push(...newRegionSalaries);
+      this.euroExchangeRate = data.euro;
+    });
+  }
 
   cancel() {
-    this.route.navigate(['/employees']);
+    this.router.navigate(['/employees']);
   }
 
   saveEmployee() {

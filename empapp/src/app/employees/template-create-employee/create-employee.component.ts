@@ -30,6 +30,7 @@ export class CreateEmployeeComponent implements OnInit, AfterViewInit, OnDestroy
   jobs: string[] = ['Developer', 'Programm Directory', 'Project Manager', 'Business Analyst', 'CEO', 'Office Manager'];
   isRegionError: boolean;
   regions: string[] = ['Bucuresti', 'Constanta', 'Cluj', 'Timisoara', 'Sibiu', 'Iasi', 'Suceava'];
+  forbidenNames = ['andrei'];
 
   constructor(private route: Router) {}
 
@@ -49,9 +50,9 @@ export class CreateEmployeeComponent implements OnInit, AfterViewInit, OnDestroy
       console.log(value);
     });
 
-    this.lastNameSubscription = this.lastNameInput.control.valueChanges.subscribe(value => {
-      console.log(value);
-    });
+    // this.lastNameSubscription = this.lastNameInput.control.valueChanges.subscribe(value => {
+    //   console.log(value);
+    // });
   }
 
   ngOnDestroy(): void {
