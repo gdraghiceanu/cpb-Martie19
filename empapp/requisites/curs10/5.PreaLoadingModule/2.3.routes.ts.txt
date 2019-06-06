@@ -1,0 +1,9 @@
+export const appRoutes: Routes = [
+    { path: 'home', component: WelcomeComponent },
+    { path: 'employees', loadChildren: './employees/emplooyee.module#EmplooyeeModule', data: { myPreload: true } },
+    { path: 'user', loadChildren: './user/user.module#UserModule' },
+    { path: 'errors', component: ErrorComponent },
+    { path: '', redirectTo: '/home', pathMatch: 'full' },
+    { path: '**', redirectTo: '/home', pathMatch: 'full' }
+];
+

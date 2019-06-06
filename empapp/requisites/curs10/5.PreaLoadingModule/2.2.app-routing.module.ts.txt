@@ -1,0 +1,14 @@
+import { NgModule } from '@angular/core';
+import { RouterModule, PreloadAllModules } from '@angular/router';
+import { appRoutes } from './routes';
+import { SelectiveStrategy } from './selective-strategy.service';
+
+@NgModule({
+  imports: [
+    RouterModule.forRoot(appRoutes, { preloadingStrategy: SelectiveStrategy })
+  ],
+  exports: [
+    RouterModule
+  ]
+})
+export class AppRoutingModule { }
