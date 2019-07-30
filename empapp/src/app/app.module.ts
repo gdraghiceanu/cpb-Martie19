@@ -24,47 +24,38 @@ import { RegionsResolver } from './resolvers/regions.resolver';
 import { EuroCurrencyResolver } from './resolvers/euro-currency.resolver';
 import { CodeReservedValidator } from './validators/code-reserved.validator';
 import { SuperheroInterceptor } from './interceptors/superhero.interceptor';
+import { TestComponent } from './test/test.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    EmployeeListComponent,
-    EmployeeComponent,
-    NavBarComponent,
-    EmployeeDetailComponent,
-    CreateEmployeeComponent,
-    ErrorComponent,
-    LoginComponent,
-    ReactiveCreateEmployeeComponent,
-    InputColorDirective,
-    NameNotAllowedValidatorDirective,
-    RonToEuroPipe
-  ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes),
-    HttpClientModule
-  ],
-  providers: [
-    EmployeeService,
-    {
-      provide: 'candDeactivateNewEmployee',
-      useValue: checkCompState
-    },
-    AuthService,
-    JobsResolver,
-    RegionsResolver,
-    EuroCurrencyResolver,
-    CodeReservedValidator,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: SuperheroInterceptor,
-      multi: true
-    }
-  ],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      EmployeeListComponent,
+      EmployeeComponent,
+      NavBarComponent,
+      EmployeeDetailComponent,
+      CreateEmployeeComponent,
+      ErrorComponent,
+      LoginComponent,
+      ReactiveCreateEmployeeComponent,
+      InputColorDirective,
+      NameNotAllowedValidatorDirective,
+      RonToEuroPipe,
+      TestComponent
+   ],
+   imports: [
+      BrowserModule,
+      FormsModule,
+      ReactiveFormsModule,
+      RouterModule.forRoot(appRoutes),
+      HttpClientModule
+   ],
+   providers: [
+      EmployeeService,
+      provide
+   ],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule {}
 
