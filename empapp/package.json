@@ -27,7 +27,7 @@
     "ngf-bootstrap": "0.0.5",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26",
-    "express": "^4.16.4"
+    "express": "^4.17.3"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.8.0",
